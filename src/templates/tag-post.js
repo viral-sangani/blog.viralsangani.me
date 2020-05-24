@@ -4,6 +4,8 @@ import Layout from '../components/layout'
 import { graphql, Link } from 'gatsby'
 import BlogCard from '../components/BlogCard'
 import get from 'lodash/get'
+import SEO from '../components/seo'
+
 // import { MdKeyboardBackspace } from 'react-icons/md'
 
 export default function TagPost(props) {
@@ -11,7 +13,7 @@ export default function TagPost(props) {
     const posts = props.data.allMdx.edges
     return (
         <Layout>
-            <Helmet title={`#${tag} | Blog`} />
+            <SEO title={`#${tag} | Blog`} />
             <main className="main">
                 <div className="container--blog mt-xs-20 mt-sm-40 mb-xs-120">
                     <Link to="/" style={{ paddingBottom: '20px' }}>

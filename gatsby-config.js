@@ -1,14 +1,14 @@
 module.exports = {
     siteMetadata: {
-        title: `Gatsby Blog`,
+        title: `Viral Sangani`,
         author: {
             name: `Viral Sangani`,
-            summary: `Just A Dev`,
+            summary: `Your Friendly Neighborhood CSE Student`,
         },
-        description: `A blog demonstrating what Gatsby can do.`,
+        description: `Friendly tutorials for programmers and developers. Focus on Linux, Web Development and Cyber Security.`,
         siteUrl: `https://blog.viralsangani.me`,
         social: {
-            twitter: `viral-sangani`,
+            twitter: `ViralSangani5`,
         },
         tags: [
             'api',
@@ -75,7 +75,7 @@ module.exports = {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         {
-            resolve: `gatsby-plugin-google-analytics`,
+            resolve: `gatsby-plugin-    gle-analytics`,
             options: {
                 //trackingId: `ADD YOUR TRACKING ID HERE`,
             },

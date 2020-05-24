@@ -9,7 +9,6 @@ import get from 'lodash/get'
 export default function TagPost(props) {
     const { tag } = props.pageContext
     const posts = props.data.allMdx.edges
-    console.log(props.pageContext)
     return (
         <Layout>
             <Helmet title={`#${tag} | Blog`} />
@@ -20,7 +19,7 @@ export default function TagPost(props) {
                     </Link>
 
                     <div style={{ display: 'flex' }}>
-                        <div class="typewriter">
+                        <div className="typewriter">
                             <p>ls -a | grep "{tag}"</p>
                         </div>
                     </div>

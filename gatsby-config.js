@@ -44,13 +44,16 @@ module.exports = {
             resolve: `gatsby-plugin-mdx`,
             options: {
                 extensions: [`.mdx`, `.md`],
-                remarkPlugins: [
+                plugins: [`gatsby-remark-images`],
+                gatsbyRemarkPlugins: [
                     {
                         resolve: `gatsby-remark-images`,
                         options: {
-                            maxWidth: 590,
+                            maxWidth: 950,
                         },
                     },
+                ],
+                remarkPlugins: [
                     {
                         resolve: `gatsby-remark-responsive-iframe`,
                         options: {
@@ -80,8 +83,8 @@ module.exports = {
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
-                name: `Gatsby Starter Blog`,
-                short_name: `GatsbyJS`,
+                name: `Viral Sangani Blog`,
+                short_name: `Viral Sangani Blog`,
                 start_url: `/`,
                 background_color: `#ffffff`,
                 theme_color: `#663399`,
@@ -102,6 +105,7 @@ module.exports = {
                 bucketName: 'blog.viralsangani.me',
             },
         },
+        `gatsby-plugin-sitemap`,
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,

@@ -19,6 +19,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             />
 
             <BlogDetail
+                excerpt={post.excerpt}
+                slug={post.fields.slug}
                 title={post.frontmatter.title}
                 created={post.frontmatter.date}
                 image={post.frontmatter.featuredImage.childImageSharp.fluid}
@@ -46,6 +48,9 @@ export const pageQuery = graphql`
             id
             excerpt(pruneLength: 160)
             body
+            fields {
+                slug
+            }
             frontmatter {
                 type
                 title

@@ -46,6 +46,22 @@ export const ThemeProvider = ({ children }) => {
             newValue === 'light' ? COLORS.light.font : COLORS.dark.font
         )
         root.style.setProperty(
+            '--font-shadow-primary',
+            newValue === 'light'
+                ? COLORS.light.fontShadowPrimary
+                : COLORS.dark.fontShadowPrimary
+        )
+        root.style.setProperty(
+            '--font-shadow-secondary',
+            newValue === 'light'
+                ? COLORS.light.fontShadowSecondary
+                : COLORS.dark.fontShadowSecondary
+        )
+        root.style.setProperty(
+            '--color',
+            newValue === 'light' ? COLORS.light.color : COLORS.dark.color
+        )
+        root.style.setProperty(
             '--hover-color',
             newValue === 'light' ? COLORS.light.hover : COLORS.dark.hover
         )

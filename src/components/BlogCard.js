@@ -1,15 +1,23 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image/withIEPolyfill'
+// import Img from 'gatsby-image/withIEPolyfill'
 import Tags from './Tags'
 
-const BlogCard = ({ slug, title, description, created, hero, tags }) => {
+const BlogCard = ({
+    slug,
+    title,
+    description,
+    created,
+    hero,
+    tags,
+    timeToRead,
+}) => {
     return (
         <div className="col-xs-12 col-md-12">
             <div className="row">
                 <div className="col-xs-12 mb-xs-40 mb-md-80">
                     <section className="list-item">
-                        <figure
+                        {/* <figure
                             className="content-item__image image mb-xs-60"
                             data-component="image"
                         >
@@ -23,17 +31,22 @@ const BlogCard = ({ slug, title, description, created, hero, tags }) => {
                                     />
                                 </span>
                             </Link>
-                        </figure>
+                        </figure> */}
                         <header className="list-item__header">
                             <time className="list-item__date">
                                 {created} &mdash;
                             </time>
-                            {'  '}3 min read
-                            <h2 className="list-item__title">
+                            <span style={{ color: 'var(--font-color)' }}>
+                                {'  '}
+                                {timeToRead} min read ☕
+                            </span>
+                            <h2
+                                className="list-item__title"
+                                style={{ marginTop: '0px' }}
+                            >
                                 <Link
-                                    className="list-item__link"
+                                    className="title__link"
                                     to={`/posts/${slug}`}
-                                    style={{ color: 'var(--font-color)' }}
                                 >
                                     {title}
                                 </Link>
@@ -47,7 +60,11 @@ const BlogCard = ({ slug, title, description, created, hero, tags }) => {
                             />
                         </section>
                         <footer className="list-item__footer">
-                            <Tags tags={tags} />
+                            <div className="row">
+                                <div id="all-tags">
+                                    <Tags tags={tags} />
+                                </div>
+                            </div>
                         </footer>
                     </section>
                 </div>

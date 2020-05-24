@@ -110,6 +110,7 @@ const ChildWrapper = styled.strong`
     position: relative;
     z-index: 1;
     font-weight: bold;
+    color: var(--color);
 `
 
 const SpecialTest = styled.span`
@@ -118,3 +119,14 @@ const SpecialTest = styled.span`
 `
 export const Special = ({ children }) => <SpecialTest>{children}</SpecialTest>
 
+export const ATag = ({ href, children }) => {
+    return (
+        <a id="a-tag" href={href}>
+            {children}
+        </a>
+    )
+}
+
+export const H3Tag = ({ children }) => {
+    return <h3 className="title__link">{children}</h3>
+}

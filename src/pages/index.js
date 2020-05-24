@@ -22,7 +22,7 @@ const BlogIndex = (props) => {
                             <Tags tags={tagNames} />
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row" style={{ paddingTop: '15px' }}>
                         &nbsp;
                         <div
                             className="sidebar col-xs-12 col-md-12"
@@ -33,6 +33,7 @@ const BlogIndex = (props) => {
                                     node.frontmatter.title || node.fields.slug
                                 return (
                                     <BlogCard
+                                        timeToRead={node.timeToRead}
                                         key={node.fields.slug}
                                         slug={node.fields.slug}
                                         title={title}
@@ -66,10 +67,11 @@ export const pageQuery = graphql`
         allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
             edges {
                 node {
-                    excerpt
+                    excerpt(pruneLength: 300)
                     fields {
                         slug
                     }
+                    timeToRead
                     frontmatter {
                         date(formatString: "MMMM DD, YYYY")
                         title

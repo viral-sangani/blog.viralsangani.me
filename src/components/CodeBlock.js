@@ -40,7 +40,6 @@ export default function CodeBlock({ children, className }) {
         >
             {({ className, style, tokens, getLineProps, getTokenProps }) => {
                 style = { ...style, fontSize: '16px', textShadow: 'none' }
-                console.log(style)
                 return (
                     <Pre className={className} style={style}>
                         {tokens.map((line, i) => (

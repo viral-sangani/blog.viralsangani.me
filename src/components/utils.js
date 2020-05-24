@@ -15,12 +15,18 @@ export const COLORS = {
     light: {
         background: '#fff',
         font: '#000',
+        fontShadowPrimary: '#e1e1e1',
+        fontShadowSecondary: '#bab8b8',
         hover: '#0629ee',
+        color: '#000',
     },
     dark: {
-        background: '#0e141b',
-        font: '#fff',
+        background: '#333333',
+        font: '#e1e1e1',
+        fontShadowPrimary: '#000',
+        fontShadowSecondary: '#757575',
         hover: '#ff0a78',
+        color: '#fff',
     },
 }
 

@@ -1,31 +1,31 @@
 ---
 title: Git It! All you need to know about Git and GitHub
 date: '2020-05-21T21:12:03.284Z'
-description: 'You must have heard the term git and GitHub, or maybe you"git-hero.pngve been using it for a while but it still seems confusing? Git is primarily a version control system which can be integrated literally in any software development pipeline, whereas Github is an online platform that provides hosting for software which uses git as version control.'
+description: 'You must have heard the term git and GitHub, or maybe you have been using it for a while but it still seems confusing? Git is primarily a version control system which can be integrated literally in any software development pipeline, whereas Github is an online platform that provides hosting for software which uses git as version control.'
 featuredImage: git-hero.png
-tags: ['git', 'coding', terminal]
+tags: ['git', 'coding', 'terminal']
 type: terminal
 ---
 
-You must have heard the term <Special>git</Special> and <Special>github</Special> or maybe you've been using itfor a while but it still seems confusing?
+You must have heard the term <Special>git</Special> and <Special>github</Special>, or maybe you've been using it for a while, but it still seems confusing?
 
-Just for the record, Git and Github are two different things. Git is primarily a version control system which can be integrated literally in any software development pipeline, where as Github is online platform that provides hosting for software which uses git as version control.
+Just for the record, Git and Github are two different things. Git is primarily a version control system that can be integrated literally in any software development pipeline. In contrast, Github is an online platform that provides hosting for software that uses Git as version control.
 
-Git can be tricky, there are some times when you just try to push your code, but you branches are out of sync and you end up wasting a lot of time there.
+Git can be tricky. There are times when you just try to push your code, but your branches are out of sync, and you end up wasting much time there.
 
-Let's see how to use git properly, so that you can focus you time in writing productive code.
+Let's see how to use Git properly to focus your time on writing productive code.
 
 #### Install & Setup
 
-Install git using following command :
+Install Git using the following command :
 
 ```bash
-sudo apt instal git
+sudo apt install git
 ```
 
-If you are on windows you show install git bash. [Click Here](https://git-scm.com/downloads) to install git bash in windows.
+If you are on windows, you show install git bash. [Click Here](https://git-scm.com/downloads) to install git bash in windows.
 
-#### Setup for newly installed git
+#### Setup for newly installed Git
 
 ```bash
 git config --global user.name "User Name"
@@ -34,18 +34,16 @@ git config --global user.email "email"
 
 #### Basic version control
 
-Goto your project directory and run `git init` to make this project as a git repository.
+Go to your project directory and run `git init` to make this project as a git repository. This will create a `.git` folder in your project, which will be used to store all the versions.
 
-This will create a `.git` folder in your project which will be used to store all the versions.
-
-To start with version controlling for existing project, you can add those file and do an initial commit.
+To start with version controlling for an existing project, you can add those files and do an initial commit.
 
 ```bash
 git add <file>
 git commit -m 'first commit'
 ```
 
-This vesion is still a local repository, you can go to github create a new repository online and link that repository to your local git repository.
+This version is still a local repository; you can go to Github and create a new repository online and link it to your local git repository.
 
 ```bash
 git remote add origin \
@@ -56,7 +54,7 @@ git remote add origin \
 https://github.com/viral-sangani/MeTube.git
 ```
 
-Then you can push the code to online github repository by just running this command,
+Then you can push the code to online Github repository by just running this command,
 
 ```bash
 git push origin master
@@ -68,9 +66,9 @@ git push origin master
 
 #### Checking the status
 
-To determine which file are in which state, we use `git status`. It allows you to see, which files in your project are changed, which file are staged, and which file are commited.
+To determine which file are in which state, we use `git status`. It allows you to see which files in your project are changed, which files are staged, and which files are committed.
 
-If you create a new file which is not in your project and run this command, you see this
+If you create a new file which is not in your project and run this command, see this
 
 ```bash
 $ git status
@@ -82,11 +80,11 @@ $ git status
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-This command is probably the most used command in git.
+This command is probably the most used in Git.
 
 #### Adding file in git
 
-There are few ways to add files in git.
+There are few ways to add files in Git.
 There are cases when you want to add files manually, but most of the time, we tend to add all the changed files. There are more efficient ways to do so instead of adding all the files manually.
 
 ```bash
@@ -99,13 +97,13 @@ git add -A
 # Adding all files changes in the current directory
 git add .
 
-# Choosing what changes to add (this will got through all your  changes and you can 'Y' or 'N' the changes)
+# Choosing what changes to add (this will get through all your  changes and you can 'Y' or 'N' the changes)
 git add -p
 ```
 
-#### Commiting your work
+#### Committing your work
 
-Normally people commit using basic command `git commit -m "<message>`, but there are some advanced ways to commit you changes.
+Usually, people commit using basic command `git commit -m "<message>`, but there are some excellent ways to commit your changes.
 
 ```bash
 # This is typically used for shorter commit messages
@@ -114,44 +112,46 @@ git commit -m 'commit message'
 # Add file and commit in one shot
 git commit filename -m 'commit message'
 
-# Add file and commit staged file
+# Add file and commit the staged file
 git commit -am 'insert commit message'
 
 # Changing your most recent commit message
 git commit --amend 'new commit message'
 
 
-# Combine a sequence of commits together into a single one
-# You might use this to organise a messy commit history
+# Combine a sequence of commits into a single one
+# You might use this to organize a messy commit history
 git rebase -i
 
-# This will give you an interface on your core editor:
+# This will give you an interface on your code editor:
 # Commands:
 #  p, pick = use commit
 #  r, reword = use commit, but edit the commit message
-#  e, edit = use commit, but stop for amending
-#  s, squash = use commit, but meld into previous commit
+#  e, edit = use commit but stop for amending
+#  s, squash = use to commit, but meld into the previous commit
 #  f, fixup = like "squash", but discard this commit's log message
 #  x, exec = run command (the rest of the line) using shell
 ```
 
 #### Branch and Merge
 
-The master branch always contains working and stable code. But there are some cases where you want to work on new features or you want to solve some bugs or maybe just want to keep the backup of current stable version.
+The master branch always contains working and stable code. There are some cases where you want to work on new features, or you want to solve some bugs or just want to keep the backup of the current stable version.
 
-Branching helps you to work on seperate copy of your code without harming the master branch. When you first create a branch it will create a exact copy of the current version, then you can do changes in the new branch independently. Once you are confident enough and you new feature is ready, you can just merge it in master branch.
+Branching helps you to work on a separate copy of your code without harming the master branch. When you first create a branch, it will create an exact copy of the current version; then, you can make changes independently in the new branch. Once you are confident enough and your new feature is ready, you can just merge it in the master branch.
 
-Just remember, it's not a good practise to do the changes directly on the master brach. Always create a branch, do the changes and merge the code into master.
+Just remember, it's not a good practice to do the changes directly on the master branch. Always create a branch, make the changes, and merge the code into master.
 
 #### Branching
 
 ```bash
 # Create a local branch to work on
-git checkout -b branchname
+git checkout -b branch_name
 
 # Switching between 2 branches
 git checkout branch_1
-git checkout branch_2### Pushing your new local branch to remote as backup
+git checkout branch_2
+
+### Pushing your new local branch to remote as a backup
 git push -u origin branch_2
 
 # Deleting a local branch - this won't let you delete a branch  ### that hasn't been merged yet
@@ -160,7 +160,7 @@ git branch -d branch_2
 # Deleting a local branch - this WILL delete a branch even if it ### hasn't been merged yet!
 git branch -D branch_2
 
-# Viewing all current branches for the repository, including both ### local and remote branches. Great to see if you already have a ### branch for a particular feature addition, especially on bigger ### projects
+# Viewing all current branches for the repository, including both ### local and remote branches. Great to see if you already have a ### branch for a particular feature addition, especially on more significant ### projects
 git branch -a
 
 
@@ -170,31 +170,31 @@ git branch
 # Viewing all remote branches
 git branch -r
 
-# Rebase master branch into local branch
-$ git rebase origin/master
+# Rebase master branch into the local branch
+$ Git rebase origin/master
 
-# Pushing local branch after rebasing master into local branch
+# Pushing local branch after rebasing master into the local branch
 $ git push origin +branchname
 ```
 
 #### Merging
 
-Now, let's see how to merge the branch to master branch.
+Now, let's see how to merge the branch to the master branch.
 
 ```bash
-# First make sure you're looking at master branch
+# First make sure you're looking at the master branch
 git checkout master
 
 # Now merge your branch to master
 git merge branch_2
 ```
 
-There are some cases when you can get a CONFLICT error while merging the code. Git will show you exact file where CONFLICT occured, and after resolving the CONFLICT, you have to commit the current version.
+There are some cases when you can get a CONFLICT error while merging the code. Git will show you the exact file where CONFLICT occurred, and after resolving the CONFLICT, you have to commit the current version.
 
 #### Backtracking
 
-Things go wrong sometime, and we should know how to fix it.
-Git has everything you need in case you make a mistake with the code you push, overwrote something, or just want to make a correction to something you pushed.
+Things go wrong sometimes, and we should know how to fix it.
+Git has everything you need to make a mistake with the code you push, overwrite something, or just want to correct something you pushed.
 
 ```bash
 ### Switch to the version of the code of the most recent commit
@@ -205,7 +205,7 @@ git reset HEAD -- filename # for a specific file
 git reset HEAD^ -- filename
 git reset HEAD^ -- filename # for a specific file
 
-### Switch back 3 or 5 commits
+### Switchback 3 or 5 commits
 git reset HEAD~3 -- filename
 git reset HEAD~3 -- filename # for a specific file
 git reset HEAD~5 -- filename
@@ -217,7 +217,7 @@ git reset 23FE2RE -- filename
 git reset 23FE2RE -- filename # for a specific file
 
 ### The previous commands were what's known as "soft" resets.
-### Your code is reset, but git will still keep a copy of the other code
+### Your code is reset, but Git will still keep a copy of the other code
 ### handy in case you need it. On the other hand, the --hard flag
 ### tells Git to overwrite all changes in the working directory.
 
@@ -227,7 +227,7 @@ git reset --hard 23FE2RE
 
 #### Tips for Git
 
-If you are working in the team , and because of some noob developer, you code gets currupted or you end up having issue. For cases like this, git provide a tool called `blame` which will tell you exactly whom to blame for the issue you are facing.
+If you are working in the team, and because of some noob developer, your code gets corrupted or you end up having issues. For cases like this, git provide a tool called `blame`, which will tell you precisely whom to blame for the issue you are facing.
 
 ```bash
 ### Show alteration history of a file with the name of the author
@@ -240,12 +240,12 @@ git blame 'filename' -l
 
 #### Git logging
 
-I personally use `git log` most of time.
-It will show you all the commits in you branch, and will show you the current status of other branch too.
+I use `git log` most of the time.
+It will show you all the commits in your branch and will show you the current status of other branches too.
 
 ```bash
 ### Show a list of all commits in a repository. This command shows
-### everything about a commit, such as commit ID, author, date and
+### everything about a commit, such as a commit ID, author, date and
 ### commit message.
 git log
 
@@ -265,7 +265,7 @@ git log --oneline
 ### Show a list of commits in a repository since yesterday
 git log --since=yesterday
 
-### Shows log by author and searching for specific term inside the
+### Shows log by author and searching for a specific term inside the
 ### commit message
 git log --grep "term" --author "name"
 ```

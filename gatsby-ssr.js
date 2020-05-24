@@ -13,12 +13,6 @@ const MagicScriptTag = () => {
                     return persistedColorPreference
                 }
 
-                const mql = window.matchMedia('(prefers-color-scheme: dark)')
-                const hasMediaQueryPreference = typeof mql.matches === 'boolean'
-                if (hasMediaQueryPreference) {
-                    return mql.matches ? 'dark' : 'light'
-                }
-
                 return 'dark'
             }
             const colorMode = getInitialColorMode();
@@ -34,6 +28,24 @@ const MagicScriptTag = () => {
                 colorMode === 'light'
                 ? '${COLORS.light.font}'
                 : '${COLORS.dark.font}'
+            );
+            root.style.setProperty(
+                '--font-shadow-primary',
+                colorMode === 'light'
+                ? '${COLORS.light.fontShadowPrimary}'
+                : '${COLORS.dark.fontShadowPrimary}'
+            );
+            root.style.setProperty(
+                '--font-shadow-secondary',
+                colorMode === 'light'
+                ? '${COLORS.light.fontShadowSecondary}'
+                : '${COLORS.dark.fontShadowSecondary}'
+            );
+            root.style.setProperty(
+                '--color',
+                colorMode === 'light'
+                ? '${COLORS.light.color}'
+                : '${COLORS.dark.color}'
             );
             root.style.setProperty(
                 '--hover-color',

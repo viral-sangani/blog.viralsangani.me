@@ -7,10 +7,9 @@ import { ThemeContext } from './Context'
 import { Switch } from '@material-ui/core'
 import { FormGroup, FormControlLabel } from '@material-ui/core'
 
-const Navigaion = () => {
+const Navigaion = ({ image }) => {
     const [showHamburger, setShowHamburger] = useState(false)
     const { colorMode, setColorMode } = useContext(ThemeContext)
-
     const showNav = () => {
         setShowHamburger(true)
     }
@@ -33,7 +32,7 @@ const Navigaion = () => {
                                     >
                                         <img
                                             className="header-image__img"
-                                            src="https://avatars2.githubusercontent.com/u/36530381?s=400&u=c855ebdff9ae53fd8ae4d45d6273c45b06e4f83c&v=4"
+                                            src={image.src}
                                             alt="Viral Sangani"
                                         />
                                     </Link>
@@ -68,12 +67,17 @@ const Navigaion = () => {
                                                     style={{
                                                         color:
                                                             'var(--font-color)',
+                                                        fontSize: '25px',
                                                     }}
                                                     onClick={() => {
                                                         setColorMode('light')
                                                     }}
                                                 >
-                                                    <Brightness7Icon fontSize="large" />
+                                                    <Brightness7Icon
+                                                        style={{
+                                                            fontSize: '25px',
+                                                        }}
+                                                    />
                                                 </IconButton>
                                             ) : (
                                                 <IconButton
@@ -81,12 +85,17 @@ const Navigaion = () => {
                                                     style={{
                                                         color:
                                                             'var(--font-color)',
+                                                        fontSize: '25px',
                                                     }}
                                                     onClick={() => {
                                                         setColorMode('dark')
                                                     }}
                                                 >
-                                                    <Brightness4Icon fontSize="large" />
+                                                    <Brightness4Icon
+                                                        style={{
+                                                            fontSize: '25px',
+                                                        }}
+                                                    />
                                                 </IconButton>
                                             )}
                                         </li>
@@ -139,7 +148,7 @@ const Navigaion = () => {
                             }}
                         >
                             <svg
-                                class="clickable"
+                                className="clickable"
                                 version="1.1"
                                 id="Layer_1"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +156,7 @@ const Navigaion = () => {
                                 x="0px"
                                 y="0px"
                                 viewBox="0 0 327.688 327.681"
-                                enable-background="new 0 0 327.688 327.681"
+                                enableBackground="new 0 0 327.688 327.681"
                                 // xml:space="preserve"
                             >
                                 <path
@@ -208,5 +217,3 @@ const Navigaion = () => {
     )
 }
 export default Navigaion
-
-//////////////////////////////////////////////////////////////////////////////////

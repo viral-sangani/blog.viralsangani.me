@@ -5,8 +5,11 @@ import BlogComment from './BlogComment'
 import Tags from './Tags'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import RenderMdx from './RederMdx'
+import SocialShare from './SocialShare'
 
 const BlogDetail = ({
+    excerpt,
+    slug,
     title,
     created,
     image,
@@ -15,7 +18,6 @@ const BlogDetail = ({
     next,
     tags,
     id,
-    type,
 }) => {
     return (
         <main className="main">
@@ -26,12 +28,7 @@ const BlogDetail = ({
                 <div className="row">
                     <div className="col-xs-12 mb-xs-40 mb-md-80">
                         <header className="content-item__header">
-                            <h1
-                                className="content-item__title"
-                                style={{ color: 'var(--font-color)' }}
-                            >
-                                {title}
-                            </h1>
+                            <h1 className="title__link">{title}</h1>
                             <p className="content-item__subtitle">
                                 <time
                                     className="content-item__date"
@@ -42,7 +39,11 @@ const BlogDetail = ({
                                 </time>
                                 &mdash;
                             </p>
-                            <Tags tags={tags} />
+                            <div className="row">
+                                <div id="all-tags">
+                                    <Tags tags={tags} />
+                                </div>
+                            </div>
                         </header>
                         <figure
                             className="content-item__image image mb-xs-60"
@@ -79,22 +80,32 @@ const BlogDetail = ({
                             {previous && (
                                 <li>
                                     <Link
-                                        to={`posts/${previous.slug}`}
+                                        to={`posts/${previous.fields.slug}`}
                                         rel="prev"
                                     >
-                                        ← {previous.title}
+                                        ← {previous.frontmatter.title}
                                     </Link>
                                 </li>
                             )}
 
                             {next && (
                                 <li>
-                                    <Link to={`posts/${next.slug}`} rel="next">
-                                        {next.title} →
+                                    <Link
+                                        to={`posts/${next.fields.slug}`}
+                                        rel="next"
+                                    >
+                                        {next.frontmatter.title} →
                                     </Link>
                                 </li>
                             )}
                         </ul>
+
+                        <SocialShare
+                            slug={slug}
+                            excerpt={excerpt}
+                            title={title}
+                        />
+
                         <BlogComment title={title} id={id} />
                     </div>
                 </div>

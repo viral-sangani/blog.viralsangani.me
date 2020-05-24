@@ -40,12 +40,9 @@ exports.createPages = async ({ graphql, actions }) => {
     // Create blog posts pages.
     const posts = result.data.allMdx.edges
     const tags = result.data.site.siteMetadata.tags
-
     posts.forEach((post, index) => {
-        const previous =
-            index === posts.length - 1 ? null : posts[index + 1].node
-        const next = index === 0 ? null : posts[index - 1].node
-
+        const next = index === posts.length - 1 ? null : posts[index + 1].node
+        const previous = index === 0 ? null : posts[index - 1].node
         createPage({
             path: '/posts' + post.node.fields.slug,
             component: blogPost,

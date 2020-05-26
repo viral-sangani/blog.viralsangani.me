@@ -11,6 +11,7 @@ const Pre = styled.pre`
     padding: 0.5em;
     overflow: scroll;
     font-size: 5px;
+    border-radius: 5px;
 `
 
 const Line = styled.div`
@@ -41,22 +42,30 @@ export default function CodeBlock({ children, className }) {
             {({ className, style, tokens, getLineProps, getTokenProps }) => {
                 style = { ...style, fontSize: '16px', textShadow: 'none' }
                 return (
-                    <Pre className={className} style={style}>
-                        {tokens.map((line, i) => (
-                            <Line key={i} {...getLineProps({ line, key: i })}>
-                                <LineNo>{i + 1}</LineNo>
-                                <LineContent>
-                                    {line.map((token, key) => (
-                                        <span
-                                            style={{ fontSize: '10px' }}
-                                            key={key}
-                                            {...getTokenProps({ token, key })}
-                                        />
-                                    ))}
-                                </LineContent>
-                            </Line>
-                        ))}
-                    </Pre>
+                    <div className="gatsby-highlight" data-language={language}>
+                        <Pre className={className} style={style}>
+                            {tokens.map((line, i) => (
+                                <Line
+                                    key={i}
+                                    {...getLineProps({ line, key: i })}
+                                >
+                                    <LineNo>{i + 1}</LineNo>
+                                    <LineContent>
+                                        {line.map((token, key) => (
+                                            <span
+                                                style={{ fontSize: '10px' }}
+                                                key={key}
+                                                {...getTokenProps({
+                                                    token,
+                                                    key,
+                                                })}
+                                            />
+                                        ))}
+                                    </LineContent>
+                                </Line>
+                            ))}
+                        </Pre>
+                    </div>
                 )
             }}
         </Highlight>

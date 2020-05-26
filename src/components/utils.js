@@ -39,10 +39,12 @@ export const tagNames = [
     'coding',
     'python',
     'terminal',
-    'websites',
+    'website',
     'javascript',
     'opensource',
     'cybersecurity',
+    'django',
+    'reactjs',
 ]
 
 export const useRandomInterval = (callback, minDelay, maxDelay) => {

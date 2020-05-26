@@ -1,5 +1,4 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import Layout from '../components/layout'
 import { graphql, Link } from 'gatsby'
 import BlogCard from '../components/BlogCard'

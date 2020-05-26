@@ -426,3 +426,42 @@
         3px 3px 2px var(--font-shadow-secondary),
         4px 4px 0 var(--font-shadow-secondary);
 }
+
+.gatsby-highlight {
+    position: relative;
+    border-radius: 5px;
+    -webkit-overflow-scrolling: touch;
+}
+.gatsby-highlight pre[class*='language-'] {
+    -webkit-overflow-scrolling: touch;
+}
+.gatsby-highlight pre[class*='language-']::before {
+    background: black;
+    border-radius: 0 0 0.25rem 0.25rem;
+    color: white;
+    font-size: 12px;
+    letter-spacing: 0.025rem;
+    padding: 0.1rem 0.5rem;
+    position: absolute;
+    right: 1rem;
+    text-align: right;
+    text-transform: uppercase;
+    top: 0;
+}
+.gatsby-highlight pre[class~='language-bash']::before {
+    content: 'bash';
+    background: var(--hover-color);
+    color: var(--color);
+}
+
+.gatsby-highlight pre[class~='language-js']::before {
+    content: 'js';
+    background: var(--hover-color);
+    color: var(--color);
+}
+
+.gatsby-highlight pre[class~='language-python']::before {
+    content: 'python';
+    background: var(--hover-color);
+    color: var(--color);
+}

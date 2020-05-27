@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import BlogCard from '../components/BlogCard'
 import { tagNames } from '../components/utils'
+import Subscribe from '../components/Subscribe'
 
 const BlogIndex = (props) => {
     const { data, location } = props
@@ -49,6 +50,7 @@ const BlogIndex = (props) => {
                             })}
                         </div>
                     </div>
+                    <Subscribe />
                 </div>
             </main>
         </Layout>

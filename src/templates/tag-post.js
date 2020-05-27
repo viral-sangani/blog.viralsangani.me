@@ -4,6 +4,7 @@ import { graphql, Link } from 'gatsby'
 import BlogCard from '../components/BlogCard'
 import get from 'lodash/get'
 import SEO from '../components/seo'
+import Subscribe from '../components/Subscribe'
 
 // import { MdKeyboardBackspace } from 'react-icons/md'
 
@@ -18,7 +19,6 @@ export default function TagPost(props) {
                     <Link to="/" style={{ paddingBottom: '20px' }}>
                         <div className="back-btn">⤆ Go Back</div>
                     </Link>
-
                     <div style={{ display: 'flex' }}>
                         <div className="typewriter">
                             <p>ls -a | grep "{tag}"</p>
@@ -51,6 +51,7 @@ export default function TagPost(props) {
                             })}
                         </div>
                     </div>
+                    <Subscribe />
                 </div>
             </main>
         </Layout>

@@ -6,6 +6,10 @@ import Tags from './Tags'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import RenderMdx from './RederMdx'
 import SocialShare from './SocialShare'
+import ClapButton from 'react-clap-button'
+import axios from 'axios'
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt'
+import Subscribe from './Subscribe'
 
 const BlogDetail = ({
     excerpt,
@@ -19,9 +23,33 @@ const BlogDetail = ({
     tags,
     id,
 }) => {
+    const [likes, setLikes] = React.useState({
+        totalLikes: 0,
+        userLikes: 0,
+        loading: true,
+    })
+    React.useEffect(() => {
+        axios
+            .get(
+                `https://ux28cjiz1f.execute-api.ap-south-1.amazonaws.com/dev/api/blog/get?slug=${slug}`
+            )
+            .then((res) => {
+                setLikes({
+                    totalLikes: res.data.totalLikes,
+                    userLikes: res.data.userLikes,
+                    loading: false,
+                })
+            })
+    }, [slug])
+
+    const onCountChange = () => {
+        axios.get(
+            `https://ux28cjiz1f.execute-api.ap-south-1.amazonaws.com/dev/api/blog/set?slug=${slug}`
+        )
+    }
     return (
         <main className="main">
-            <section className="container--blog mt-xs-20 mt-sm-40 mb-xs-120">
+            <section className="container--blog mt-xs-20 mt-sm-40">
                 <Link to="/" style={{ paddingBottom: '20px' }}>
                     <div className="back-btn">⤆ Go Back</div>
                 </Link>
@@ -32,8 +60,8 @@ const BlogDetail = ({
                             <p className="content-item__subtitle">
                                 <time
                                     className="content-item__date"
-                                    datetime=""
-                                    itemprop="datePublished"
+                                    dateTime=""
+                                    itemProp="datePublished"
                                 >
                                     {created}
                                 </time>
@@ -99,17 +127,48 @@ const BlogDetail = ({
                                 </li>
                             )}
                         </ul>
+                    </div>
+                </div>
+            </section>
 
+            <div className="container--blog mt-sm-20 mb-xs-120">
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                    }}
+                >
+                    {!likes.loading && (
+                        <div style={{ marginRight: '20px' }}>
+                            <ClapButton
+                                count={likes.userLikes}
+                                countTotal={likes.totalLikes}
+                                maxCount={10}
+                                onCountChange={onCountChange}
+                                iconComponent={(props) => (
+                                    <ThumbUpAltIcon
+                                        {...props}
+                                        style={{
+                                            fontSize: '40px',
+                                            color: 'var(--hover-color)',
+                                        }}
+                                    />
+                                )}
+                            />
+                        </div>
+                    )}
+
+                    <div>
                         <SocialShare
                             slug={slug}
                             excerpt={excerpt}
                             title={title}
                         />
-
-                        <BlogComment title={title} id={id} />
                     </div>
                 </div>
-            </section>
+                <BlogComment title={title} id={id} />
+                <Subscribe />
+            </div>
         </main>
     )
 }

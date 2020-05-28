@@ -25,7 +25,7 @@
 ![materialUI](https://img.shields.io/badge/Material-UI-%231976D2)
 ![django](https://img.shields.io/pypi/djversions/djangorestframework?logo=Django)
 
-### Hosted Using
+### :floppy_disk: Hosted Using
 - **AWS S3** - Static Hosting
 - **AWS Cloudfront** - CDN Service
 - **AWS SES** - Subscription Email

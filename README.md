@@ -46,4 +46,4 @@ Created my own APIs using django which can be found here - [https://github.com/v
 3. To start the project, run `gatsby develop`.
 
 ### 💜 Thanks
-Special thanks to [@tanaypratap](https://github.com/tanaypratap) sir, and [teamtanay.jobchallenge.dev](https://github.com/tanaypratap/teamtanay.jobchallenge.dev) for encouraging student to create amazing projects and help us to grow.
+Special thanks to [@tanaypratap](https://github.com/tanaypratap) sir, and [2020.teamtanay.jobchallenge.dev](https://github.com/tanaypratap/teamtanay.jobchallenge.dev) for encouraging student like me to create amazing projects and help us to grow.

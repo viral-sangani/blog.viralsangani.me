@@ -16,21 +16,24 @@ export default function Subscribe() {
 
     const handleClick = (e) => {
         e.preventDefault()
+        if (email === '') {
+            console.log('Error')
+        } else {
+            formBtn.classList.add('btn--active')
+            subscribeImg.classList.add('subscribe__image--success')
+            formBtn.classList.add('btn--success')
+            formBtn.value = "You're on the list! 👍"
 
-        formBtn.classList.add('btn--active')
-        subscribeImg.classList.add('subscribe__image--success')
-        formBtn.classList.add('btn--success')
-        formBtn.value = "You're on the list! 👍"
-
-        formInput.disabled = true
-        formBtn.disabled = true
-        addToMailchimp(email)
-            .then((data) => {
-                console.log(data.result)
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+            formInput.disabled = true
+            formBtn.disabled = true
+            addToMailchimp(email)
+                .then((data) => {
+                    console.log(data.result)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
     }
     return (
         <div className="subscribe">

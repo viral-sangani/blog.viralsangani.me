@@ -128,5 +128,25 @@ export const ATag = ({ href, children }) => {
 }
 
 export const H3Tag = ({ children }) => {
-    return <h3 className="title__link">{children}</h3>
+    return (
+        <h3 className="title__link" style={{ paddingTop: '20px' }}>
+            {children}
+        </h3>
+    )
+}
+
+export const Quote = ({ children }) => {
+    return (
+        <div className="quote-body">
+            <blockquote>{children}</blockquote>
+        </div>
+    )
+}
+
+export const QuoteAuthor = ({ children }) => {
+    return (
+        <div className="quote-body">
+            <cite>{children}</cite>
+        </div>
+    )
 }

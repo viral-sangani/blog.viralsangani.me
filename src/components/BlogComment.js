@@ -18,10 +18,12 @@ export default function Comment(props) {
                     config={disqusConfig}
                 />
             ) : (
-                <DiscussionEmbed
-                    shortname={disqusShortname}
-                    config={disqusConfig}
-                />
+                <div>
+                    <DiscussionEmbed
+                        shortname={disqusShortname}
+                        config={disqusConfig}
+                    />
+                </div>
             )}
         </>
     )

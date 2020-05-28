@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
 @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
 .typewriter p {
     font-family: 'Anonymous Pro', monospace;
     overflow: hidden; /* Ensures the content is not revealed until the animation */
@@ -655,4 +656,50 @@
     .subscribe {
         min-width: 350px;
     }
+}
+
+blockquote {
+    font-weight: 100;
+    font-size: 2rem;
+    max-width: 80%;
+    line-height: 1.4;
+    position: relative;
+    margin: 0;
+    padding: 0.5rem;
+    color: var(--font-color);
+}
+
+blockquote:before,
+blockquote:after {
+    position: absolute;
+    color: #f1efe6;
+    font-size: 8rem;
+    width: 4rem;
+    height: 4rem;
+}
+
+blockquote:before {
+    content: '“';
+    left: -5rem;
+    top: -2rem;
+}
+
+blockquote:after {
+    content: '”';
+    right: -5rem;
+    bottom: 1rem;
+}
+
+cite {
+    line-height: 3;
+    text-align: left;
+}
+.quote-body {
+    font-family: 'Special Elite', cursive;
+    color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 35px 0;
 }

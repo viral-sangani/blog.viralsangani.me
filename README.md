@@ -19,7 +19,7 @@
 <img src="./static/gatsby-blog-gif.gif" alt="Personal Blog">
 </p>
 
-## Technology Stack
+## :raised_hands: Technology Stack
 ![js](https://img.shields.io/badge/frontend-js-yellow?style=flat&logo=javaScript)
 ![gatsby](https://img.shields.io/badge/Gastby-JS-%23663399)
 ![materialUI](https://img.shields.io/badge/Material-UI-%231976D2)
@@ -32,7 +32,7 @@
 - **AWS Lamdba** - Serverless function for Email and Post Likes
 - **AWS Route53** - Sub-Domain Configuration
 
-### APIs
+### :key: APIs
 Created my own APIs using django which can be found here - [https://github.com/viral-sangani/personal-serverless-django/](https://github.com/viral-sangani/personal-serverless-django/)
 
 ## 🚀 Get Up and Running in 5 Minutes
@@ -40,7 +40,7 @@ Created my own APIs using django which can be found here - [https://github.com/v
 * [node](https://nodejs.org/en/) >= 12.16.2
 * [npm](https://www.npmjs.com/) >= 6.14.4
 
-### Steps
+### :running: Steps
 1. Clone/Download [this](https://github.com/viral-sangani/gatsby-blog) repository.
 2. Inside the project open a terminal and run `npm i --save`.
 3. To start the project, run `gatsby develop`.

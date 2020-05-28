@@ -8,3 +8,8 @@
 <p align="center">
 🚀⚡️ Blazing fast blog built with Gatsby and hosted serverlessly using AWS Lambda and S3  🔥
 </p>
+
+## DEMO
+<p align="center">
+<img src="./static/gatsby-blog-gif.gif" alt="musology">
+</p>

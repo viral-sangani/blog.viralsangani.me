@@ -1,9 +1,10 @@
 import React from 'react'
-import addToMailchimp from 'gatsby-plugin-mailchimp'
 import { Special } from './ContentUtils'
+import axios from 'axios'
 
 export default function Subscribe() {
     const [email, setEmail] = React.useState('')
+    const [name, setName] = React.useState('')
     const formInput =
         typeof window !== 'undefined' &&
         document.querySelector('.subscribe__input')
@@ -13,12 +14,17 @@ export default function Subscribe() {
     const subscribeImg =
         typeof window !== 'undefined' &&
         document.querySelector('.subscribe__image')
+    const nameInput =
+        typeof window !== 'undefined' && document.querySelector('.nameInput')
+    const emailInput =
+        typeof window !== 'undefined' && document.querySelector('.emailInput')
 
-    const handleClick = (e) => {
+    const handlSubmit = (e) => {
         e.preventDefault()
         if (email === '') {
             console.log('Error')
         } else {
+            // console.log()
             formBtn.classList.add('btn--active')
             subscribeImg.classList.add('subscribe__image--success')
             formBtn.classList.add('btn--success')
@@ -26,12 +32,14 @@ export default function Subscribe() {
 
             formInput.disabled = true
             formBtn.disabled = true
-            addToMailchimp(email)
-                .then((data) => {
-                    console.log(data.result)
-                })
-                .catch((error) => {
-                    console.log(error)
+            nameInput.disabled = true
+            emailInput.disabled = true
+            axios
+                .get(
+                    `https://ux28cjiz1f.execute-api.ap-south-1.amazonaws.com/dev/api/blog/subscribe?email=${email}&name=${name}`
+                )
+                .then((res) => {
+                    console.log(res.data)
                 })
         }
     }
@@ -56,14 +64,23 @@ export default function Subscribe() {
                     be no spam and you can unsubscribe at any time.
                 </p>
             </div>
-            <form className="form" id="form">
+            <form className="form" id="form" onSubmit={handlSubmit}>
                 {/* jsx-a11y/control-has-associated-label*/}
                 <input
-                    className="subscribe__input input"
+                    className="subscribe__input input nameInput"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    type="text"
+                    placeholder="Enter your Full Name"
+                    required
+                    name="name"
+                />
+                <input
+                    className="subscribe__input input emailInput"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder="Enter your Email"
                     required
                     name="email"
                 />
@@ -71,7 +88,6 @@ export default function Subscribe() {
                     className="subscribe__btn btn"
                     type="submit"
                     value="Subscribe"
-                    onClick={handleClick}
                 />
             </form>
         </div>

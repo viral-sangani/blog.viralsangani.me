@@ -21,7 +21,7 @@ export const COLORS = {
         color: '#000',
     },
     dark: {
-        background: '#333333',
+        background: '#262525',
         font: '#e1e1e1',
         fontShadowPrimary: '#000',
         fontShadowSecondary: '#757575',
@@ -45,6 +45,7 @@ export const tagNames = [
     'cybersecurity',
     'django',
     'reactjs',
+    'vim',
 ]
 
 export const useRandomInterval = (callback, minDelay, maxDelay) => {

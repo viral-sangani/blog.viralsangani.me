@@ -25,6 +25,7 @@ module.exports = {
             'cybersecurity',
             'django',
             'reactjs',
+            'vim',
         ],
     },
     plugins: [

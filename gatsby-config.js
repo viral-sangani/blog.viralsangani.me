@@ -145,6 +145,19 @@ module.exports = {
                     'https://viralsangani.us18.list-manage.com/subscribe/post?u=90ba620c0c778fff47a90ddc0&amp;id=78e0525554',
             },
         },
+        {
+            resolve: `gatsby-plugin-scroll-indicator`,
+            options: {
+                // Configure color of the scroll indicator
+                color: 'linear-gradient(to right, #1536EF, #FF0A78)',
+                // Height of the scroll indicator
+                height: '3px',
+                // Configure paths where the scroll indicator will appear
+                paths: ['/', '/posts/**', '/tags/**'],
+                // Configure the z-index of the indicator element
+                zIndex: `9999`,
+            },
+        },
 
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline

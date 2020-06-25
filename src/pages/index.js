@@ -15,7 +15,7 @@ const BlogIndex = (props) => {
 
     return (
         <Layout location={location} title={siteTitle}>
-            <SEO title="All Posts" />
+            <SEO title="" />
             <main className="main">
                 <div className="container--blog mt-xs-20 mt-sm-40 mb-xs-120">
                     <div className="row">

@@ -1,6 +1,6 @@
 module.exports = {
     siteMetadata: {
-        title: `Viral Sangani`,
+        title: `Viral Sangani Blog`,
         author: {
             name: `Viral Sangani`,
             summary: `Your Friendly Neighborhood CSE Student`,
@@ -148,19 +148,11 @@ module.exports = {
         {
             resolve: `gatsby-plugin-scroll-indicator`,
             options: {
-                // Configure color of the scroll indicator
                 color: 'linear-gradient(to right, #1536EF, #FF0A78)',
-                // Height of the scroll indicator
                 height: '3px',
-                // Configure paths where the scroll indicator will appear
                 paths: ['/', '/posts/**', '/tags/**'],
-                // Configure the z-index of the indicator element
                 zIndex: `9999`,
             },
         },
-
-        // this (optional) plugin enables Progressive Web App + Offline functionality
-        // To learn more, visit: https://gatsby.dev/offline
-        // `gatsby-plugin-offline`,
     ],
 }

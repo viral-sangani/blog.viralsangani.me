@@ -16,7 +16,7 @@ jobs:
       - name: Deploy static site to S3 bucket
         env:
           AWS_BUCKET: ${{secrets.AWS_BUCKET}}
-        run: aws s3 sync ./build/ s3://$AWS_BUCKET --delete
+        run: aws s3 sync ./public/ s3://$AWS_BUCKET 
       - name: Clodfront invalidation on AWS
         env:
           DISTRIBUTION_ID: ${{ secrets.DISTRIBUTION_ID}}

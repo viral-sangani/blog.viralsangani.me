@@ -30,6 +30,12 @@ const MagicScriptTag = () => {
                 : '${COLORS.dark.font}'
             );
             root.style.setProperty(
+                '--font-secondary-color',
+                colorMode === 'light'
+                ? '${COLORS.light.fontSecondary}'
+                : '${COLORS.dark.fontSecondary}'
+            );
+            root.style.setProperty(
                 '--font-shadow-primary',
                 colorMode === 'light'
                 ? '${COLORS.light.fontShadowPrimary}'

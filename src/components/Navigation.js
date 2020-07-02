@@ -44,7 +44,13 @@ const Navigaion = ({ image }) => {
                                         >
                                             Viral Sangani
                                         </Link>
-                                        <p className="header-subtitle color-xs-light-gray">
+                                        <p
+                                            className="header-subtitle "
+                                            style={{
+                                                color:
+                                                    'var(--font-secondary-color)',
+                                            }}
+                                        >
                                             Your Friendly Neighborhood CSE
                                             Student
                                         </p>
@@ -52,12 +58,23 @@ const Navigaion = ({ image }) => {
                                 </div>
                                 <nav className="header-nav">
                                     <ul className="header-nav__list">
-                                        <li className="header-nav__item hide-xs show-sm">
+                                        <li
+                                            className="header-nav__item hide-xs show-sm"
+                                            style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                            }}
+                                        >
                                             <a
                                                 className="header-nav__link header-nav__link--light link--no-underline "
-                                                href="mailto:hey@viralsangani.me"
+                                                href="mailto:viral.sangani2011@gmail.com"
+                                                style={{
+                                                    color:
+                                                        'var(--font-secondary-color)',
+                                                }}
                                             >
-                                                hey@viralsangani.me
+                                                viral.sangani2011@gmail.com
                                             </a>
                                         </li>
                                         <li className="header-nav__item hide-xs show-sm">
@@ -175,9 +192,9 @@ const Navigaion = ({ image }) => {
                             <li className="header-nav__item">
                                 <a
                                     className="header-nav__link header-nav__link--light link--no-underline "
-                                    href="mailto:hey@viralsangani.me"
+                                    href="mailto:viral.sangani2011@gmail.com"
                                 >
-                                    hey@viralsangani.me
+                                    viral.sangani2011@gmail.com
                                 </a>
                             </li>
                             <li className="header-nav__item">

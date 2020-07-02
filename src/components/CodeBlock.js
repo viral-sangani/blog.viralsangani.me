@@ -41,6 +41,8 @@ export default function CodeBlock({ children, className }) {
         >
             {({ className, style, tokens, getLineProps, getTokenProps }) => {
                 style = { ...style, fontSize: '16px', textShadow: 'none' }
+                tokens = tokens.slice(0, -1)
+                console.log('tokens', tokens)
                 return (
                     <div className="gatsby-highlight" data-language={language}>
                         <Pre className={className} style={style}>

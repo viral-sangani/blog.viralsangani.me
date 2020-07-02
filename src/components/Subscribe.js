@@ -58,7 +58,10 @@ export default function Subscribe() {
                 </p>
             </div>
             <div className="subscribe__text" style={{ maxWidth: '80%' }}>
-                <p className="subheading">
+                <p
+                    className="subheading"
+                    style={{ color: 'var(--font-secondary-color)' }}
+                >
                     This year I'm focusing big-time on writing content for web
                     developers. Expect rich and bite-sized articles. There will
                     be no spam and you can unsubscribe at any time.

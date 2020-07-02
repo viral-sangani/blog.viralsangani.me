@@ -19,6 +19,7 @@ export const COLORS = {
         fontShadowSecondary: '#bab8b8',
         hover: '#0629ee',
         color: '#000',
+        fontSecondary: '#7f7a7a',
     },
     dark: {
         background: '#262525',
@@ -27,6 +28,7 @@ export const COLORS = {
         fontShadowSecondary: '#757575',
         hover: '#ff0a78',
         color: '#fff',
+        fontSecondary: '#999898',
     },
 }
 

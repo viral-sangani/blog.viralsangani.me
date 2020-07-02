@@ -29,6 +29,7 @@ module.exports = {
         ],
     },
     plugins: [
+        `gatsby-plugin-material-ui`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -65,6 +66,9 @@ module.exports = {
                     },
                     {
                         resolve: `gatsby-remark-prismjs`,
+                        options: {
+                            escapeEntities: ['}', '='],
+                        },
                     },
                     {
                         resolve: `gatsby-remark-copy-linked-files`,
@@ -135,14 +139,6 @@ module.exports = {
             options: {
                 tooltipText: `Copy code`,
                 toasterDuration: 5000,
-            },
-        },
-
-        {
-            resolve: 'gatsby-plugin-mailchimp',
-            options: {
-                endpoint:
-                    'https://viralsangani.us18.list-manage.com/subscribe/post?u=90ba620c0c778fff47a90ddc0&amp;id=78e0525554',
             },
         },
         {

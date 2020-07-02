@@ -46,6 +46,12 @@ export const ThemeProvider = ({ children }) => {
             newValue === 'light' ? COLORS.light.font : COLORS.dark.font
         )
         root.style.setProperty(
+            '--font-secondary-color',
+            newValue === 'light'
+                ? COLORS.light.fontSecondary
+                : COLORS.dark.fontSecondary
+        )
+        root.style.setProperty(
             '--font-shadow-primary',
             newValue === 'light'
                 ? COLORS.light.fontShadowPrimary

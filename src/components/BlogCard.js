@@ -17,23 +17,11 @@ const BlogCard = ({
             <div className="row">
                 <div className="col-xs-12 mb-xs-40 mb-md-80">
                     <section className="list-item">
-                        {/* <figure
-                            className="content-item__image image mb-xs-60"
-                            data-component="image"
-                        >
-                            <Link to={`/posts/${slug}`}>
-                                <span className="image__content">
-                                    <Img
-                                        Tag="div"
-                                        className="image__img_blog"
-                                        fluid={hero}
-                                        backgroundColor={`#007ACC`}
-                                    />
-                                </span>
-                            </Link>
-                        </figure> */}
                         <header className="list-item__header">
-                            <time className="list-item__date">
+                            <time
+                                style={{ color: 'var(--font-secondary-color)' }}
+                                className="list-item__date"
+                            >
                                 {created} &mdash;
                             </time>
                             <span style={{ color: 'var(--font-color)' }}>

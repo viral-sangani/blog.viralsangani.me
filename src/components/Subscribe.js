@@ -68,7 +68,7 @@ export default function Subscribe() {
                 </p>
             </div>
             <form className="form" id="form" onSubmit={handlSubmit}>
-                {/* jsx-a11y/control-has-associated-label*/}
+                {/* eslint-disable-next-line jsx-a11y/control-has-associated-label*/}
                 <input
                     className="subscribe__input input nameInput"
                     value={name}
@@ -78,6 +78,7 @@ export default function Subscribe() {
                     required
                     name="name"
                 />
+                {/* eslint-disable-next-line jsx-a11y/control-has-associated-label*/}
                 <input
                     className="subscribe__input input emailInput"
                     value={email}
@@ -87,6 +88,7 @@ export default function Subscribe() {
                     required
                     name="email"
                 />
+                {/* eslint-disable-next-line jsx-a11y/control-has-associated-label*/}
                 <input
                     className="subscribe__btn btn"
                     type="submit"

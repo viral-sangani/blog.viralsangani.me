@@ -95,8 +95,8 @@ module.exports = {
                 start_url: `/`,
                 background_color: `#ffffff`,
                 theme_color: `#663399`,
-                display: `minimal-ui`,
-                icon: `content/assets/gatsby-icon.png`,
+                display: `standalone`,
+                icon: `./static/logo.png`,
             },
         },
         `gatsby-plugin-react-helmet`,
@@ -110,6 +110,12 @@ module.exports = {
             resolve: `gatsby-plugin-s3`,
             options: {
                 bucketName: 'blog.viralsangani.me',
+            },
+        },
+        {
+            resolve: 'gatsby-plugin-zopfli',
+            options: {
+                extensions: ['css', 'html', 'js', 'svg'],
             },
         },
         `gatsby-plugin-sitemap`,
@@ -148,6 +154,20 @@ module.exports = {
                 height: '3px',
                 paths: ['/', '/posts/**', '/tags/**'],
                 zIndex: `9999`,
+            },
+        },
+        {
+            resolve: 'gatsby-plugin-robots-txt',
+            options: {
+                host: 'https://viralsangani.me',
+                sitemap: 'https://viralsangani.me/sitemap.xml',
+                policy: [{ userAgent: '*', allow: '/' }],
+            },
+        },
+        {
+            resolve: `gatsby-plugin-offline`,
+            options: {
+                precachePages: [`/`],
             },
         },
     ],

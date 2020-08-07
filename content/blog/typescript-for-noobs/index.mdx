@@ -1,0 +1,118 @@
+---
+title: Typescript for Noobs [Part 1]
+date: '2020-08-07T16:12:03.284Z'
+description: 'If you are noob in Typescript and want to learn Typescript, without going through those 10 hours courses then you are in right place'
+featuredImage: typescript-hero.png
+tags: ['javascript']
+type: terminal
+---
+
+Recently I have been working on javascript and to be more specific ReactJS. Latetly Typescripte was on my redar for a while. So in this post we will see basic of Typescript that I wish I knew when I started working on Typescript and React.
+
+## Typescript and React hand in hand..
+
+React is a javascript framework created by Facebook, which uses component based development, and it's doing a damm goo job in it. It basically uses virtual DOM instead of regular DOM to manipulate the tree of website.
+
+Typescript essentially is a strict, typed language unlike javascript. Typescript was created and maintained by Microsoft. Typescript compiles code to readable, standard bases javascript code. The important thing about typescript is that it allows to add static types to javascript code and doing so helps us to catch the error way earlier and helps in debugging process.
+
+### Setup
+
+> So in this post I am assuming that you have basic idea of what is react.
+
+Setting up typescript can be pain in the a\*\*, but thankfully create-react-app has a template that does that heavy work for us.
+
+```bash
+npx create-react-app my-app-name --template typescript
+```
+
+Next we will setup the linters for typescript because who doesn't want cleaner and standard code.
+In this, I'll be using the legend ESLint and Prettier combo.
+
+```bash
+npm install --save-dev eslint@6.8.x @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react prettier eslint-config-prettier eslint-plugin-prettier --dev
+```
+
+Next we will create basic configuration file for eslint. In the root of the project create a file named `.eslintrc.js` and add the following code.
+
+```javascript
+module.exports = {
+    parser: '@typescript-eslint/parser', // Specifies the ESLint parser
+    parserOptions: {
+        ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
+        sourceType: 'module', // Allows for the use of imports
+        ecmaFeatures: {
+            jsx: true, // Allows for the parsing of JSX
+        },
+    },
+    settings: {
+        react: {
+            version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
+        },
+    },
+    extends: [
+        'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
+        'plugin:@typescript-eslint/recommended', // Uses the recommended rules from @typescript-eslint/eslint-plugin
+        'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
+        'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+    ],
+    rules: {
+        // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
+        // e.g. "@typescript-eslint/explicit-function-return-type": "off",
+    },
+}
+```
+
+We also need to configure Prettier just like we did eslint. Create a file `.prettierc.js` in the root directory of the project and paste the below code.
+
+```javascript
+module.exports = {
+    semi: true,
+    trailingComma: 'all',
+    singleQuote: true,
+    printWidth: 120,
+    tabWidth: 4,
+}
+```
+
+Finally to tie up all the knots, all the following line to your `package.json`.
+
+```json
+"lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+```
+
+This way all we have to do is run `npm run lint` and all the linting will be done for us. You can setup your VSCode to lint your code every time you save you file.
+
+If you are working in a group project and suppose there is one member who does not believe inm Legend (ESLint & Prettier), then you can setup Github action to lint you code every you push your code. All you hace to do is, create a file in `.github/workflows` with name - `linters.yml`. Add following code in that file.
+
+```yml
+name: Linters
+
+on: pull_request
+
+env:
+    FORCE_COLOR: 1
+
+jobs:
+    eslint:
+        name: ESLint
+        runs-on: ubuntu-18.04
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: '12.x'
+            - name: Setup ESLint
+              run: |
+                  npm install --save-dev eslint@6.8.x @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react --dev
+                  [ -f .eslintrc.js ]
+            - name: ESLint Report
+              run: npx eslint .
+```
+
+Whenever someone in you team create a PR or push the code, then the whole codebase will be checked with ESLint and Prettier.
+
+Since we are settingup every then let us setup tailwindcss too. Tailwind is greate for developing frontend.
+
+Depending on what you need there are two options, the basic one for development, and on for production, because you don't want to send the full tailwindcss to production. To setup tailwind, I use this [greate acticle](https://daveceddia.com/tailwind-create-react-app/#production) by Dave Ceddia.
+
+This is Part 1 of two part series. In next part we will se basic of how to code in Typescript w.r.t React.

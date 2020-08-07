@@ -1,0 +1,14 @@
+name: MasterCI
+on:
+  push:
+    branches:
+      - publish
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: sarisia/actions-status-discord@v1
+      with:
+        webhook: ${{ secrets.CODESTRIKE_WEBHOOK }}
+        nodetail: true
+        title: "New blog post Test"

@@ -1104,7 +1104,7 @@ table {
 .container--dark {
   background-color: #4b5155;
 }
-
+/* 
 @font-face {
   font-family: 'Maison Neue';
   src: url('fonts/maison-neue/maison-neue-light.eot');
@@ -1189,7 +1189,7 @@ table {
     url('fonts/maison-neue/maison-neue-bold-italic.ttf') format('truetype');
   font-weight: 500;
   font-style: italic;
-}
+} */
 
 * {
   box-sizing: border-box !important;

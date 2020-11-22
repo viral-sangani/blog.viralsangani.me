@@ -31,12 +31,20 @@ module.exports = {
   plugins: [
     `gatsby-plugin-material-ui`,
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Inter`, `Anonymous Pro`, `Sriracha`, `Special Elite`],
+        display: 'swap',
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
       },
     },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {

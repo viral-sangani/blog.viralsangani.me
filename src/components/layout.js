@@ -8,26 +8,26 @@ import { ThemeProvider } from './Context'
 import { StaticQuery, graphql } from 'gatsby'
 
 export default ({ children }) => {
-    return (
-        <ThemeProvider>
-            <StaticQuery
-                query={graphql`
-                    {
-                        file(name: { eq: "avatar" }) {
-                            childImageSharp {
-                                fluid(quality: 90, maxWidth: 300) {
-                                    ...GatsbyImageSharpFluid_withWebp
-                                }
-                            }
-                        }
-                    }
-                `}
-                render={(data) => (
-                    <Navigation image={data.file.childImageSharp.fluid} />
-                )}
-            />
-            {children}
-            <Footer />
-        </ThemeProvider>
-    )
+  return (
+    <ThemeProvider>
+      <StaticQuery
+        query={graphql`
+          {
+            file(name: { eq: "avatar" }) {
+              childImageSharp {
+                fluid(quality: 90, maxWidth: 300) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+        `}
+        render={(data) => (
+          <Navigation image={data.file.childImageSharp.fluid} />
+        )}
+      />
+      {children}
+      <Footer />
+    </ThemeProvider>
+  )
 }

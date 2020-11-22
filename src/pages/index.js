@@ -2,7 +2,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Tags from '../components/Tags'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 import SEO from '../components/seo'
 import BlogCard from '../components/BlogCard'
 import { tagNames } from '../components/utils'

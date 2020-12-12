@@ -26,6 +26,7 @@ module.exports = {
       'django',
       'reactjs',
       'vim',
+      'flutter',
     ],
   },
   plugins: [

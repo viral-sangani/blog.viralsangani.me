@@ -408,6 +408,7 @@ table {
   margin-left: auto;
   padding-right: 19rem;
   padding-left: 19rem;
+  max-width: 1600px;
 }
 
 @media (max-width: 768px) {

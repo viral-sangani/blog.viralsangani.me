@@ -6,6 +6,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const tagPost = path.resolve('./src/templates/tag-post.js')
+  const subscribeBlog = path.resolve('./src/templates/subscribe.js')
   const result = await graphql(
     `
       {
@@ -63,6 +64,11 @@ exports.createPages = async ({ graphql, actions }) => {
         filterTag: tag,
       },
     })
+  })
+  createPage({
+    path: `subscribe/`,
+    component: subscribeBlog,
+    context: {},
   })
 }
 

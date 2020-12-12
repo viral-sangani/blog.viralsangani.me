@@ -63,12 +63,55 @@ const Navigaion = ({ image }) => {
                     >
                       <a
                         className="header-nav__link header-nav__link--light link--no-underline "
-                        href="mailto:viral.sangani2011@gmail.com"
+                        href="/subscribe"
+                        title="Subscribe to my blog"
                         style={{
                           color: 'var(--font-secondary-color)',
                         }}
                       >
-                        viral.sangani2011@gmail.com
+                        Subscribe
+                      </a>
+                    </li>
+                    <li
+                      className="header-nav__item hide-xs show-sm"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <a
+                        className="header-nav__link header-nav__link--light link--no-underline "
+                        href="https://github.com/viral-sangani"
+                        target="_blank"
+                        title="Look through my Github profile"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: 'var(--font-secondary-color)',
+                        }}
+                      >
+                        Github
+                      </a>
+                    </li>
+                    <li
+                      className="header-nav__item hide-xs show-sm"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <a
+                        className="header-nav__link header-nav__link--light link--no-underline "
+                        href="mailto:viral.sangani2011@gmail.com"
+                        target="_blank"
+                        title="You can email me here"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: 'var(--font-secondary-color)',
+                        }}
+                      >
+                        Contact
                       </a>
                     </li>
                     <li className="header-nav__item hide-xs show-sm">
@@ -177,9 +220,70 @@ const Navigaion = ({ image }) => {
               <li className="header-nav__item">
                 <a
                   className="header-nav__link header-nav__link--light link--no-underline "
-                  href="mailto:viral.sangani2011@gmail.com"
+                  href="/subscribe"
                 >
-                  viral.sangani2011@gmail.com
+                  Viral Sangani's Blog
+                </a>
+              </li>
+              <li
+                className="header-nav__item hide-xs show-sm"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'start',
+                }}
+              >
+                <a
+                  className="header-nav__link header-nav__link--light link--no-underline "
+                  href="/subscribe"
+                  title="Subscribe to my blog"
+                  style={{
+                    color: 'var(--font-secondary-color)',
+                  }}
+                >
+                  Subscribe
+                </a>
+              </li>
+              <li
+                className="header-nav__item hide-xs show-sm"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'start',
+                }}
+              >
+                <a
+                  className="header-nav__link header-nav__link--light link--no-underline "
+                  href="https://github.com/viral-sangani"
+                  target="_blank"
+                  title="Look through my Github profile"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: 'var(--font-secondary-color)',
+                  }}
+                >
+                  Github
+                </a>
+              </li>
+              <li
+                className="header-nav__item hide-xs show-sm"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'start',
+                }}
+              >
+                <a
+                  className="header-nav__link header-nav__link--light link--no-underline "
+                  href="mailto:viral.sangani2011@gmail.com"
+                  target="_blank"
+                  title="You can email me here"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: 'var(--font-secondary-color)',
+                  }}
+                >
+                  Contact
                 </a>
               </li>
               <li className="header-nav__item">

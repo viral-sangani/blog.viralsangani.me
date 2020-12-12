@@ -624,6 +624,14 @@
 .subscribe__btn {
   width: 180px;
   font-weight: bold;
+  margin-left: 20px;
+  color: black;
+  background-color: rgb(231, 231, 231);
+}
+
+.subscribe__btn:hover {
+  background-color: var(--hover-color);
+  color: white;
 }
 
 @-webkit-keyframes buttonActive {

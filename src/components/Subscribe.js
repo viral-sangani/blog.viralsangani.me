@@ -5,17 +5,6 @@ import { StaticQuery, graphql } from 'gatsby'
 
 export default function Subscribe() {
   const [email, setEmail] = React.useState('')
-  const [name] = React.useState('')
-  const formInput =
-    typeof window !== 'undefined' && document.querySelector('.subscribe__input')
-  const formBtn =
-    typeof window !== 'undefined' && document.querySelector('.subscribe__btn')
-  const subscribeImg =
-    typeof window !== 'undefined' && document.querySelector('.subscribe__image')
-  const nameInput =
-    typeof window !== 'undefined' && document.querySelector('.nameInput')
-  const emailInput =
-    typeof window !== 'undefined' && document.querySelector('.emailInput')
 
   return (
     <div className="subscribe">
@@ -65,7 +54,7 @@ export default function Subscribe() {
         <label>
           Email &nbsp;&nbsp;&nbsp;
           <input
-            className="subscribe__input input emailInput"
+            className="subscribe__input input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
@@ -74,10 +63,9 @@ export default function Subscribe() {
           />
         </label>
         <input
-          style={{ marginLeft: 20 }}
           className="subscribe__btn btn"
           type="submit"
-          value="Subscribe"
+          value="Subscribe 😬"
         />
       </form>
     </div>

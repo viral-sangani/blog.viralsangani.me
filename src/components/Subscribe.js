@@ -17,30 +17,6 @@ export default function Subscribe() {
   const emailInput =
     typeof window !== 'undefined' && document.querySelector('.emailInput')
 
-  const handlSubmit = (e) => {
-    e.preventDefault()
-    if (email === '') {
-      console.log('Error')
-    } else {
-      // console.log()
-      formBtn.classList.add('btn--active')
-      subscribeImg.classList.add('subscribe__image--success')
-      formBtn.classList.add('btn--success')
-      formBtn.value = "You're on the list! 👍"
-
-      formInput.disabled = true
-      formBtn.disabled = true
-      nameInput.disabled = true
-      emailInput.disabled = true
-      axios
-        .get(
-          `https://ux28cjiz1f.execute-api.ap-south-1.amazonaws.com/dev/api/blog/subscribe?email=${email}&name=${name}`
-        )
-        .then((res) => {
-          console.log(res.data)
-        })
-    }
-  }
   return (
     <div className="subscribe">
       <div className="subscribe__image">
@@ -77,7 +53,15 @@ export default function Subscribe() {
           unsubscribe at any time.
         </p>
       </div>
-      <form className="form" id="form" onSubmit={handlSubmit}>
+      <form
+        className="form"
+        id="form"
+        action="https://buttondown.email/api/emails/embed-subscribe/viral-sangani"
+        method="post"
+        target="popupwindow"
+        onsubmit="window.open('https://buttondown.email/viral-sangani', 'popupwindow')"
+        class="embeddable-buttondown-form"
+      >
         <label>
           Email &nbsp;&nbsp;&nbsp;
           <input
@@ -89,7 +73,12 @@ export default function Subscribe() {
             name="email"
           />
         </label>
-        <input className="subscribe__btn btn" type="submit" value="Subscribe" />
+        <input
+          style={{ marginLeft: 20 }}
+          className="subscribe__btn btn"
+          type="submit"
+          value="Subscribe"
+        />
       </form>
     </div>
   )

@@ -47,6 +47,8 @@ const BlogIndex = (props) => {
             </div>
           </div>
           <Subscribe />
+          <br />
+          <br />
         </div>
       </main>
     </Layout>

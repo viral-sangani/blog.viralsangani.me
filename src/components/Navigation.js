@@ -114,6 +114,7 @@ const Navigaion = ({ image }) => {
                   className="header-hamburger button--reset clickable"
                   data-header-hamburger
                   onClick={showNav}
+                  aria-label="Hamberger"
                 >
                   <svg
                     className="svg svg--hamburger"

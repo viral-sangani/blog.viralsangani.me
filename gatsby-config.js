@@ -8,7 +8,7 @@ module.exports = {
     description: `Friendly tutorials for programmers and developers. Focus on Linux, Web Development and Cyber Security.`,
     siteUrl: `https://blog.viralsangani.me`,
     social: {
-      twitter: `ViralSangani5`,
+      twitter: `viral_sangani_`,
     },
     tags: [
       'api',

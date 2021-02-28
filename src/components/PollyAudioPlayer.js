@@ -29,7 +29,13 @@ const PollyAudioPlayer = ({ slug }) => {
             }}
           >
             <h4 style={{ color: 'black', fontWeight: 800 }}>
-              🎧&nbsp;&nbsp; Listen blog while reading &nbsp;&nbsp;🎧
+              <span role="img" aria-label="headphones">
+                🎧
+              </span>
+              &nbsp;&nbsp; Listen blog while reading &nbsp;&nbsp;
+              <span role="img" aria-label="headphones">
+                🎧
+              </span>
             </h4>
           </div>
         }

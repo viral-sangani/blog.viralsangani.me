@@ -1,5 +1,4 @@
 import React from 'react'
-import Img from 'gatsby-image/withIEPolyfill'
 import { Link } from 'gatsby'
 import BlogComment from './BlogComment'
 import Tags from './Tags'

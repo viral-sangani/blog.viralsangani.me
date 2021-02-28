@@ -29,18 +29,21 @@ jobs:
         run: aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
       
       - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
 
       - name: Install python dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install boto3
+        run: |
+          python -m pip install --upgrade pip
+          pip install boto3
+        env:
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
 
       - name: Running polly service
-      run: |
-        python main.py
+        run: |
+          python main.py
 
       - name: Sending Telegram Message using Bot
         uses: appleboy/telegram-action@master

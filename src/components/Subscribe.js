@@ -1,6 +1,5 @@
 import React from 'react'
 import { SpecialBlack } from './ContentUtils'
-import axios from 'axios'
 import { StaticQuery, graphql } from 'gatsby'
 
 export default function Subscribe() {

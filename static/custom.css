@@ -428,6 +428,30 @@
     4px 4px 0 var(--font-shadow-secondary);
 }
 
+.title__link__h1 {
+  /* text-decoration: none; */
+  font-weight: 500;
+  font-size: 48px;
+  color: var(--font-color);
+  text-shadow: 1px 1px var(--font-shadow-primary),
+    2px 2px var(--font-shadow-primary), 3px 3px 0 var(--font-shadow-primary);
+  transition: all 0.12s ease-out;
+  -moz-transition: all 0.12s ease-out;
+  -ms-transition: all 0.12s ease-out;
+  -o-transition: all 0.12s ease-out;
+}
+.title__link__h1:hover {
+  text-decoration: none;
+  color: var(--color);
+  position: relative;
+  top: -1px;
+  left: -1px;
+  text-shadow: 1px 1px var(--font-shadow-secondary),
+    2px 2px var(--font-shadow-secondary),
+    3px 3px 2px var(--font-shadow-secondary),
+    4px 4px 0 var(--font-shadow-secondary);
+}
+
 .gatsby-highlight {
   position: relative;
   border-radius: 5px;

@@ -32,12 +32,10 @@ export const COLORS = {
 }
 
 export const tagNames = [
-  'api',
   'aws',
   'git',
   'ci-cd',
   'linux',
-  'coding',
   'python',
   'terminal',
   'website',
@@ -47,6 +45,8 @@ export const tagNames = [
   'django',
   'reactjs',
   'vim',
+  'flutter',
+  'nginx',
 ]
 
 export const useRandomInterval = (callback, minDelay, maxDelay) => {

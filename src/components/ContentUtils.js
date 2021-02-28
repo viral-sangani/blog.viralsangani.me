@@ -140,6 +140,22 @@ export const H3Tag = ({ children }) => {
   )
 }
 
+export const H1Tag = ({ children }) => {
+  return (
+    <h3 className="title__link__h1" style={{ paddingTop: '20px' }}>
+      {children}
+    </h3>
+  )
+}
+
+export const H2Tag = ({ children }) => {
+  return (
+    <h3 className="title__link" style={{ paddingTop: '20px' }}>
+      {children}
+    </h3>
+  )
+}
+
 export const Quote = ({ children }) => {
   return (
     <div className="quote-body">

@@ -3,6 +3,9 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
     steps:
       - uses: actions/checkout@v1
       - name: Configure AWS Credentials
@@ -11,16 +14,34 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }} 
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-2
+
       - name: Build static site
         run: npm install && npm run build
+
       - name: Deploy static site to S3 bucket
         env:
           AWS_BUCKET: ${{secrets.AWS_BUCKET}}
         run: aws s3 sync ./public/ s3://$AWS_BUCKET 
+
       - name: Clodfront invalidation on AWS
         env:
           DISTRIBUTION_ID: ${{ secrets.DISTRIBUTION_ID}}
         run: aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
+      
+      - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+      - name: Install python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install boto3
+
+      - name: Running polly service
+      run: |
+        python main.py
+
       - name: Sending Telegram Message using Bot
         uses: appleboy/telegram-action@master
         with:

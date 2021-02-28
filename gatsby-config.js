@@ -11,12 +11,10 @@ module.exports = {
       twitter: `viral_sangani_`,
     },
     tags: [
-      'api',
       'aws',
       'git',
       'ci-cd',
       'linux',
-      'coding',
       'python',
       'terminal',
       'website',
@@ -27,6 +25,7 @@ module.exports = {
       'reactjs',
       'vim',
       'flutter',
+      'nginx',
     ],
   },
   plugins: [

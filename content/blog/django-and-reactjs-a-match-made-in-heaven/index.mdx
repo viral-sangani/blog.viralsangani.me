@@ -5,14 +5,15 @@ description: 'How to create a Django REST API? How to structure a Django project
 featuredImage: django-react-hero.jpg
 tags: ['python', 'api', 'website', 'coding', 'django', 'reactjs']
 type: terminal
+publish: true
 ---
 
 Django and React is an excellent combination. With React's SPA and Django's long list of essential libraries, we can create outstanding website apps. For this application to work, React will have to interact with Django, i.e., retrieving and storing data. To create the interface with integration, we will create API in the Back-end(Django) and consume that API in Front-end(React).
 
 ### Requirements to follow along with this post
 
--   a basic understanding of Python and Django
--   a basic understanding of JS(ECMAScript) and ReactJS
+- a basic understanding of Python and Django
+- a basic understanding of JS(ECMAScript) and ReactJS
 
 Let's start coding.
 
@@ -313,39 +314,36 @@ import './App.css'
 import axios from 'axios'
 
 function App() {
-    const [values, setValues] = React.useState([])
-    React.useEffect(() => {
-        axios.get('http://localhost:8000/api/contact/').then((res) => {
-            console.log(res.data)
-            setValues(res.data)
-        })
-    }, [])
-    return (
-        <div className="App">
-            <header className="App-header">
-                <p>Data from Django</p>
-                {values.length > 0 &&
-                    values.map((value) => {
-                        return (
-                            <div
-                                key={value.id}
-                                style={{ borderBottom: '2px solid white' }}
-                            >
-                                <p>
-                                    <strong>Name:</strong> {value.name}
-                                </p>
-                                <p>
-                                    <strong>Email:</strong> {value.email}
-                                </p>
-                                <p>
-                                    <strong>Message:</strong> {value.message}
-                                </p>
-                            </div>
-                        )
-                    })}
-            </header>
-        </div>
-    )
+  const [values, setValues] = React.useState([])
+  React.useEffect(() => {
+    axios.get('http://localhost:8000/api/contact/').then((res) => {
+      console.log(res.data)
+      setValues(res.data)
+    })
+  }, [])
+  return (
+    <div className="App">
+      <header className="App-header">
+        <p>Data from Django</p>
+        {values.length > 0 &&
+          values.map((value) => {
+            return (
+              <div key={value.id} style={{ borderBottom: '2px solid white' }}>
+                <p>
+                  <strong>Name:</strong> {value.name}
+                </p>
+                <p>
+                  <strong>Email:</strong> {value.email}
+                </p>
+                <p>
+                  <strong>Message:</strong> {value.message}
+                </p>
+              </div>
+            )
+          })}
+      </header>
+    </div>
+  )
 }
 
 export default App

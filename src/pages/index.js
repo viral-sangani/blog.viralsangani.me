@@ -30,19 +30,23 @@ const BlogIndex = (props) => {
               data-component="sidebar"
             >
               {posts.map(({ node }) => {
-                const title = node.frontmatter.title || node.fields.slug
-                return (
-                  <BlogCard
-                    timeToRead={node.timeToRead}
-                    key={node.fields.slug}
-                    slug={node.fields.slug}
-                    title={title}
-                    created={node.frontmatter.date}
-                    description={node.excerpt}
-                    hero={node.frontmatter.featuredImage.childImageSharp.fluid}
-                    tags={node.frontmatter.tags}
-                  />
-                )
+                if (node.frontmatter.publish) {
+                  const title = node.frontmatter.title || node.fields.slug
+                  return (
+                    <BlogCard
+                      timeToRead={node.timeToRead}
+                      key={node.fields.slug}
+                      slug={node.fields.slug}
+                      title={title}
+                      created={node.frontmatter.date}
+                      description={node.excerpt}
+                      hero={
+                        node.frontmatter.featuredImage.childImageSharp.fluid
+                      }
+                      tags={node.frontmatter.tags}
+                    />
+                  )
+                } else return null
               })}
             </div>
           </div>
@@ -73,6 +77,7 @@ export const pageQuery = graphql`
           }
           timeToRead
           frontmatter {
+            publish
             date(formatString: "MMMM DD, YYYY")
             title
             tags

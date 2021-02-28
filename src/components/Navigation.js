@@ -47,7 +47,7 @@ const Navigaion = ({ image }) => {
                         color: 'var(--font-secondary-color)',
                       }}
                     >
-                      Your Friendly Neighborhood CSE Student
+                      Your Friendly Neighborhood Tech Guy
                     </p>
                   </div>
                 </div>

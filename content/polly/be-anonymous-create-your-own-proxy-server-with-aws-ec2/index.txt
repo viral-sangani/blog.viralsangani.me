@@ -1,4 +1,4 @@
-We are living in 2020, and both users and internet applications can take the benefit of cybersecurity. One of the best ways to be secure while browsing the Internet is by using <Special>proxy servers.</Special>
+We are living in 2020, and both users and internet applications can take the benefit of cybersecurity. One of the best ways to be secure while browsing the Internet is by using proxy servers.
 The proxy server is an important thing to know about nowadays. Let's see what makes proxy servers an essential aspect of cybersecurity support.
 
 Thanks to traking cookies, online anonymity is out like COVID 19 virus, everybody knows about it, but few are doing something about it. While your next-door-neighbour might not know where to find you online, but there is at least one large corporation (you know whom I am indicating Google), which has a series of 0's and 1's stored in their database which represents you, specific details of what you buy, what you like, what you don't, including your favourite ice cream flavour.

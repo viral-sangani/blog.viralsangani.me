@@ -1,0 +1,204 @@
+JSON Web Token(JWT) is an authentication strategy used by client/server applications. In this post, we will see how we can integrate JWT in Django REST Framework APIs.
+
+How JSON Web Token works?
+
+JWT is a token that has to be attached to every request made by the client.
+
+
+JWT is designed in such a way that, a client exchange access token and refresh token for username and password.
+
+1. Access Tokens: are short-lived, generally 5 min, and can
+   be modified.
+
+2. Refresh Tokens: are comparatively long-lived, generally
+   12 hours. It can be compared to session token, which Django generally uses. A
+   refresh token is used to get the new access token, once an access token is expired.
+
+Why would we need Refresh token, we can work with access token only?
+It's a Security feature that provides more security in terms of cache stealing or related attacks. And also because a JWT token, holds information. If you look closely at the above example of JWT token, you can see that token is divided into 3 parts.
+
+Those are the parts that compose the JWT tokens. Those three parts are distinctive,
+
+header.payload.signature
+
+So, from above example we have,
+
+
+If you are thinking, what are those weird-looking text, it's standard text-encoded in Base64. If we decode them, we get,
+
+header
+
+  "typ", "JWT",
+  "alg", "HS256"
+
+payload
+
+{
+  "token type", "access",
+  "user id", 1
+}
+
+signature
+
+Signature is not encoded in base64. Signature is a token, which is created by JWT backend by combining the encoded header + encoded payload +  "SECRET KEY " of Django. If someone tries to change the header or the payload to poke around the database, then the signature would change. The only way of checking and validating the JWT token and signature is with the help of  "SECRET KEY. " That's why people say, store your  "SECRET KEY " key in the env variable and never push your production  "SECRET KEY " on Github public repo.
+
+That's the basic of JWT. If you want to go deep, I would suggest referring to this site. https://jwt.io/
+
+Let's start with Django's implementation.
+
+Installation
+
+Setting up a virtual environment for the project
+
+Never forgot to create a virtual environment for a Django project. Create a folder for your project and move into it. :
+
+mkdir django-jwt && cd $ 
+
+Install dependency for the python environment, and create a virtual environment.
+
+sudo apt-get install python3-venv
+python3 -m venv venv
+source venv/bin/activate
+
+Now pull the dependencies for Django and rest framework.
+
+pip install django djangorestframework djangorestframework simplejwt
+
+When it completes, you can create a Django project.
+
+django-admin startproject django jwt .
+
+Building Django application
+
+To create an app in Django, run this command,
+
+python manage.py startapp jwt api
+
+After creating this app, your folder structure should look like this,
+
+Now let's inform Django about this newly created app, move to "django jwt/settings.py, " and add the app in INSTALLED APPS.
+
+INSTALLED APPS = [
+    'jwt api',
+]
+
+Add these lines in  "django jwt/settings.py. "
+
+REST FRAMEWORK = {
+    'DEFAULT AUTHENTICATION CLASSES': [
+        'rest framework simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
+This will tell the REST framework to use JWT Authentication instead of Basic Authentication.
+Add this in  "django jwt/urls.py "
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('api/', include("jwt api.urls"))
+]
+
+
+Now let's create an actual endpoint in  "jwt api.urls.py. "
+
+from rest framework simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+from django.urls import path
+urlpatterns = [
+    path('token/', TokenObtainPairView.as view(), name='token obtain pair'),
+    path('token/refresh/', TokenRefreshView.as view(), name='token refresh'),
+]
+
+
+For this post, we will create a simple API view, as shown below.
+
+class HelloView(APIView):
+    permission classes = (IsAuthenticated,)
+
+    def get(self, request):
+        content = {'message': 'Hello, World!'}
+        return Response(content)
+
+This view will only return data if the user authenticated because we have added  "permission classes = (IsAuthenticated,). " This uses  "DEFAULT AUTHENTICATION CLASSES " from settings.py, which we have defined and use that authentication method.
+
+Add this URL in  "urls.py ". So now our final  "jwt api/urls.py " becomes,
+
+urlpatterns = [
+    path('token/', TokenObtainPairView.as view(), name='token obtain pair'),
+    path('token/refresh/', TokenRefreshView.as view(), name='token refresh'),
+    path('hello/', HelloView.as view(), name='hello'),
+]
+
+Now to test this API, we have to create a user. To do so, make migrations and create a superuser.
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+
+Once this is set up, we can start the server and test the user endpoint.
+
+python manage.py runserver
+
+Usage
+
+Since I am using Linux, I will be using httpie for testing, you can use Postman, insomnia or simply use cURL.
+
+The first step is to authenticate and obtain tokens. For this, we will use  "/api/token/ " endpoint. This endpoint is provided by  "djangorestframework simplejwt " library itself. You can see the documentation here started.htmlinstallation.
+
+Run this command in the terminal.
+
+http post http://127.0.0.1:8000/api/token/ username=admin password=admin
+
+This is the response I get:
+
+
+Usually, we store these tokens on the client-side, in localStorage. To access the protected URL, we will attach the  "access " token without request in the header like this,
+
+From the above request, I got:
+
+"message"  "Hello, World!"
+
+If someone alters the token, and try to get the data, then the response will be,
+
+
+    "code" "token not valid",
+    "detail" "Given token not valid for any token type",
+
+    "message" "Token is invalid or expired",
+    "token class" "AccessToken",
+    "token type" "access"
+
+After 5 min, If you try the same token, we will receive the same response as above. In that case, the client has to use refresh token and ask for a new access token and store it in localStorage again. The endpoint refresh token in  "/api/token/refresh/. "
+
+Here is the example,
+
+In this case, you will receive only the access token as shown below,
+
+
+Now the client can use this token to access all the other resources.
+
+Note: By client, I am referring to the Client-side framework, Eg: ReactJS, AngularJS, simple VanillaJS, or 3rd party applications.
+
+Why we need Refresh token at all?
+
+Whether tokens are opaque or not is usually defined by the implementation. Common implementations allow for direct authorization checks against an access token. That is, when an access token is passed to a server managing a resource, the server can read the information contained in the token and decide itself whether the user is authorized or not (no checks against an authorization server are needed). This is one of the reasons tokens must be signed (using JWS, for instance). On the other hand, refresh tokens usually require a check against the authorization server. This split way of handling authorization checks allows for three things:
+
+
+Improved access patterns against the authorization server (lower load, faster checks)  
+
+Shorter windows of access for leaked access tokens (these expire quickly, reducing the chance of a leaked token allowing access to a protected resource)  
+
+Sliding-sessions (see below)
+
+Sliding-sessions
+
+Sliding-sessions are sessions that expire after a period of inactivity. As you can imagine, this is easily implemented using access tokens and refresh tokens. When a user acts, a new access token is issued. If the user uses an expired access token, the session is considered inactive, and a new access token is required. This token can be obtained with a refresh token, or a new authentication round is required. The requirements of the development team define this.
+Security considerations
+
+Refresh tokens are long-lived. This means when a client gets a refresh token from a server, this token must be stored securely to keep it from being used by potential attackers. If a refresh token is leaked, it may be used to obtain new access tokens (and access protected resources) until it is either blacklisted or expires (which may take a long time). Refresh tokens must be issued to a single authenticated client to prevent the use of leaked tokens by other parties. Access tokens must be kept secret, but as you may imagine, security considerations are less strict due to their shorter life.
+
+Reference

@@ -760,3 +760,7 @@ cite {
 .token.operator {
   background: none;
 }
+
+button:focus {
+  outline: 0;
+}

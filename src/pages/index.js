@@ -15,20 +15,16 @@ const BlogIndex = (props) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Blog " />
-      <main className="main">
-        <div className="container--blog mt-xs-20 mt-sm-40 mb-xs-120">
-          <div className="row">
+      <SEO title="Blog" />
+      <main className="bg-light-background dark:bg-dark-background pt-10">
+        <div className="flex flex-col mx-auto relative max-w-screen-lg px-2 sm:px-6 lg:px-20 py-4">
+          <div className="">
             <div id="all-tags" style={{ textAlign: 'center' }}>
               <Tags tags={tagNames} />
             </div>
           </div>
-          <div className="row" style={{ paddingTop: '15px' }}>
-            &nbsp;
-            <div
-              className="sidebar col-xs-12 col-md-12"
-              data-component="sidebar"
-            >
+          <div className="pt-16">
+            <div className="">
               {posts.map(({ node }) => {
                 if (node.frontmatter.publish) {
                   const title = node.frontmatter.title || node.fields.slug
@@ -51,8 +47,6 @@ const BlogIndex = (props) => {
             </div>
           </div>
           <Subscribe />
-          <br />
-          <br />
         </div>
       </main>
     </Layout>

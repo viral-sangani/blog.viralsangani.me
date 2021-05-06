@@ -63,6 +63,8 @@
   box-shadow: 2px 3px 0 var(--font-color);
   border: 1px solid #222;
   margin: 3.5px 3px;
+  font-size: 20px;
+  font-family: 'Ubuntu Mono', monospace;
 }
 
 .tag:hover,

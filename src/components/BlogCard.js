@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'gatsby'
-// import Img from 'gatsby-image/withIEPolyfill'
 import Tags from './Tags'
 
 const BlogCard = ({
@@ -12,40 +11,36 @@ const BlogCard = ({
   tags,
   timeToRead,
 }) => {
+  console.log(`hero`, hero)
   return (
-    <div className="col-xs-12 col-md-12">
-      <div className="row">
+    <div className="row">
+      <div className="">
         <div className="col-xs-12 mb-xs-40 mb-md-80">
-          <section className="list-item">
-            <header className="list-item__header">
-              <time
-                style={{ color: 'var(--font-secondary-color)' }}
-                className="list-item__date"
-              >
+          <section className="">
+            <header className="">
+              <time className="text-light-fontShadowSecondary dark:text-dark-fontShadowSecondary text-lg">
                 {created} &mdash;
               </time>
-              <span style={{ color: 'var(--font-color)' }}>
-                {'  '}
-                {timeToRead} min read ☕
+              <span className="text-light-primary dark:text-dark-primary text-lg">
+                &nbsp;&nbsp;{timeToRead} min read ☕
               </span>
-              <h2 className="list-item__title" style={{ marginTop: '0px' }}>
-                <Link className="title__link" to={`${slug}`}>
+              <h2 className="mt-0 pb-6">
+                <Link className="title__link text-3xl" to={`${slug}`}>
                   {title}
                 </Link>
               </h2>
             </header>
-            <section className="list-item__excerpt">
+            <section className="">
               <p
+                className="text-xl text-light-font dark:text-dark-font"
                 dangerouslySetInnerHTML={{
                   __html: description,
                 }}
               />
             </section>
-            <footer className="list-item__footer">
-              <div className="row">
-                <div id="all-tags">
-                  <Tags tags={tags} />
-                </div>
+            <footer className="mb-16 mt-5">
+              <div id="all-tags">
+                <Tags tags={tags} />
               </div>
             </footer>
           </section>
@@ -56,3 +51,16 @@ const BlogCard = ({
 }
 
 export default BlogCard
+
+{
+  /* <div className="col-xs-12 col-md-12 col-lg-4">
+        <div className="row">
+          <Img
+            Tag="div"
+            className="image__img_blog"
+            fluid={hero}
+            backgroundColor={`#007ACC`}
+          />
+        </div>
+      </div> */
+}

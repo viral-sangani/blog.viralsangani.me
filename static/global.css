@@ -1,0 +1,56 @@
+/* ./src/styles/global.css */
+@tailwind base;
+@tailwind components;
+
+@layer base {
+  @font-face {
+    font-family: 'Wotfard';
+    src: local('Wotfard'),
+      url(./fonts/Wotfard_Regular/wotfard-regular-webfont.ttf) format('ttf');
+  }
+  @font-face {
+    font-family: 'Futura';
+    src: local('Futura'), url(./fonts/futura/futur.ttf) format('ttf');
+  }
+}
+
+@tailwind utilities;
+
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+
+p code,
+li code {
+  font-size: 1.125rem;
+  line-height: 2.56rem;
+  background-color: #fafafa;
+  border: 1px solid #c9d2d9;
+  border-radius: 3px;
+  color: #3b3a3a;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  vertical-align: baseline;
+  padding: 0.08rem 0.4rem;
+  white-space: nowrap;
+}
+
+blockquote p code {
+  font-style: italic;
+}
+
+p span {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

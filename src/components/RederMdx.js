@@ -10,6 +10,7 @@ import {
   QuoteAuthor,
   H1Tag,
   H2Tag,
+  PTag,
 } from './ContentUtils'
 
 const components = {
@@ -21,6 +22,7 @@ const components = {
   h1: H1Tag,
   h2: H2Tag,
   h3: H3Tag,
+  p: PTag,
   Quote: Quote,
   QuoteAuthor: QuoteAuthor,
 }

@@ -5,9 +5,6 @@ import Tags from './Tags'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import RenderMdx from './RederMdx'
 import SocialShare from './SocialShare'
-import ClapButton from 'react-clap-button'
-import axios from 'axios'
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt'
 import Subscribe from './Subscribe'
 import PollyAudioPlayer from './PollyAudioPlayer'
 
@@ -24,36 +21,17 @@ const BlogDetail = ({
   id,
   timeToRead,
 }) => {
-  const [likes, setLikes] = React.useState({
-    totalLikes: 0,
-    userLikes: 0,
-    loading: true,
-  })
-  React.useEffect(() => {
-    axios
-      .get(
-        `https://ux28cjiz1f.execute-api.ap-south-1.amazonaws.com/dev/api/blog/get?slug=${slug}`
-      )
-      .then((res) => {
-        setLikes({
-          totalLikes: res.data.totalLikes,
-          userLikes: res.data.userLikes,
-          loading: false,
-        })
-      })
-  }, [slug])
-
-  const onCountChange = () => {
-    axios.get(
-      `https://ux28cjiz1f.execute-api.ap-south-1.amazonaws.com/dev/api/blog/set?slug=${slug}`
-    )
-  }
   return (
-    <main className="main">
-      <section className="container--blog mt-xs-20 mt-sm-40">
-        <Link to="/" style={{ paddingBottom: '20px' }}>
-          <div className="back-btn">⤆ Go Back</div>
-        </Link>
+    <main className="bg-light-background dark:bg-dark-background pt-6">
+      <section className="flex flex-col mx-auto relative max-w-screen-lg px-2 sm:px-6 lg:px-20 py-4">
+        <div className="mb-8">
+          <Link
+            to="/"
+            className="py-2 px-3 border-2 border-light-font hover:border-light-primary dark:hover:border-dark-primary dark:border-dark-font rounded-xl hover:rounded-sm text-light-primary hover:text-light-font dark:hover:text-dark-font dark:text-dark-primary text-lg"
+          >
+            ⤆ Go Back
+          </Link>
+        </div>
         <div className="row">
           <div className="col-xs-12 mb-xs-40 mb-md-80">
             <header className="content-item__header">
@@ -70,8 +48,8 @@ const BlogDetail = ({
                   />
                 </span>
               </figure> */}
-              <h1 className="title__link">{title}</h1>
-              <p className="content-item__subtitle">
+              <h1 className="title__link text-3xl">{title}</h1>
+              <p className="text-light-font dark:text-dark-font text-lg py-4">
                 <time
                   className="content-item__date"
                   dateTime=""
@@ -81,7 +59,7 @@ const BlogDetail = ({
                 </time>
                 &mdash; {timeToRead} min read ☕
               </p>
-              <div className="row">
+              <div className="pb-5">
                 <div id="all-tags">
                   <Tags tags={tags} />
                 </div>
@@ -89,27 +67,15 @@ const BlogDetail = ({
             </header>
 
             <PollyAudioPlayer slug={slug} />
-            {/* <div
-                            className="post-content"
-                            dangerouslySetInnerHTML={{ __html: content }}
-                        /> */}
 
             <RenderMdx>
               <MDXRenderer>{content}</MDXRenderer>
             </RenderMdx>
             <div className="content-item__body user-content"></div>
 
-            <ul
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'space-between',
-                listStyle: 'none',
-                padding: 0,
-              }}
-            >
+            <ul className="flex flex-nowrap justify-between list-none p-0 text-light-font dark:text-dark-font text-xl">
               {previous && (
-                <li>
+                <li className="border-2 rounded-xl border-light-primary dark:border-dark-primary p-4 text-light-font dark:text-dark-font mr-2 cursor-pointer hover:font-bold">
                   <Link to={`posts/${previous.fields.slug}`} rel="prev">
                     ← {previous.frontmatter.title}
                   </Link>
@@ -117,7 +83,7 @@ const BlogDetail = ({
               )}
 
               {next && (
-                <li>
+                <li className="border-2 rounded-xl border-light-primary dark:border-dark-primary p-4 text-light-font dark:text-dark-font ml-2 cursor-pointer">
                   <Link to={`posts/${next.fields.slug}`} rel="next">
                     {next.frontmatter.title} →
                   </Link>
@@ -128,38 +94,13 @@ const BlogDetail = ({
         </div>
       </section>
 
-      <div className="container--blog mt-sm-20 mb-xs-120">
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}
-        >
-          {!likes.loading && (
-            <div style={{ marginRight: '20px' }}>
-              <ClapButton
-                count={likes.userLikes}
-                countTotal={likes.totalLikes}
-                maxCount={10}
-                onCountChange={onCountChange}
-                iconComponent={(props) => (
-                  <ThumbUpAltIcon
-                    {...props}
-                    style={{
-                      fontSize: '40px',
-                      color: 'var(--hover-color)',
-                    }}
-                  />
-                )}
-              />
-            </div>
-          )}
-
-          <div>
-            <SocialShare slug={slug} excerpt={excerpt} title={title} />
-          </div>
+      <div className="flex flex-col mx-auto relative max-w-screen-lg px-2 sm:px-6 lg:px-20 py-4">
+        <div className="flex justify-between my-4">
+          <SocialShare slug={slug} excerpt={excerpt} title={title} />
         </div>
         <BlogComment title={title} id={id} />
+      </div>
+      <div className="flex flex-col max-w-screen-lg sm:px-6 lg:px-20 py-4">
         <Subscribe />
       </div>
     </main>

@@ -1,131 +1,65 @@
 import React from 'react'
+import { Link } from 'gatsby'
 
 const Footer = ({ children }) => {
   return (
-    <footer className="footer">
-      <div className="container--blog">
-        <div className="row mb-xs-40 mb-sm-60">
-          <div className="col-xs-12 col-md-5">
-            <h3>Viral Sangani</h3>
-            <p>
-              <a
-                className="email"
-                href="mailto:viral.sangani2011@gmail.com"
-                style={{ color: 'white' }}
-              >
-                viral.sangani2011@gmail.com
-              </a>
+    <footer className="bg-light-background dark:bg-dark-background pt-12">
+      <div className="flex flex-col md:flex-row lg:flex-row justify-between flex-wrap mx-auto relative max-w-screen-lg px-2 sm:px-6 lg:px-20 py-4">
+        <div className="flex flex-col">
+          <p className="text-light-primary dark:text-dark-primary text-xl">
+            Viral Sangani
+          </p>
+          <p className="text-light-font dark:text-dark-font text-lg pt-4">
+            viral.sangani2011@gmail.com
+          </p>
+        </div>
+        <div className="flex flex-col md:flex-row lg:flex-row">
+          <div className="flex flex-col">
+            <p className="text-light-primary dark:text-dark-primary text-xl mt-8 md:mt-0 lg:mt-0">
+              Menu
             </p>
-            <p className="footer-text">
-              I’m a software developer. I can help you solve a problem, build a
-              product or grow existing project.
+            <Link to={`/`} className="pt-4 text-light-font dark:text-dark-font">
+              Blog
+            </Link>
+            <Link to={`/`} className="pt-1 text-light-font dark:text-dark-font">
+              Project
+            </Link>
+          </div>
+          <div className="flex flex-col ml-0 md:ml-10 lg:ml-10">
+            <p className="text-light-primary dark:text-dark-primary text-xl mt-8 md:mt-0 lg:mt-0">
+              Contact
             </p>
+            <Link to={`/`} className="pt-4 text-light-font dark:text-dark-font">
+              viral.sangani2011@gmail.com
+            </Link>
+            <Link to={`/`} className="pt-1 text-light-font dark:text-dark-font">
+              Skype
+            </Link>
+          </div>
+          <div className="flex flex-col ml-0 md:ml-10 lg:ml-10">
+            <p className="text-light-primary dark:text-dark-primary text-xl mt-8 md:mt-0 lg:mt-0">
+              Online
+            </p>
+            <Link to={`/`} className="pt-4 text-light-font dark:text-dark-font">
+              Github
+            </Link>
+            <Link to={`/`} className="pt-1 text-light-font dark:text-dark-font">
+              Twitter
+            </Link>
           </div>
         </div>
-        <div className="row mb-xs-40 mb-ms-80">
-          <div className="col-xs-12 col-sm-6 col-md-4 mb-xs-40">
-            <h4 className="mb-xs-20 mb-sm-40">Menu</h4>
-            <div className="row">
-              <div className="col-xs-8">
-                <ul className="list--reset">
-                  <li>
-                    <a
-                      style={{ color: 'white' }}
-                      href="https://blog.viralsangani.me"
-                    >
-                      Blog
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      style={{ color: 'white' }}
-                      href="https://viralsangani.me/projects"
-                    >
-                      Projects
-                    </a>
-                  </li>
-                  <li>
-                    <span>&mdash;</span>
-                  </li>
-                  <li>
-                    <a
-                      style={{ color: 'white' }}
-                      href="https://viralsangani.me"
-                    >
-                      Privacy
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="col-xs-12 col-sm-6 col-md-4 col-md-offset-1 mb-xs-40">
-            <h4 className="mb-xs-20 mb-sm-40">Contact</h4>
-            <ul className="list--reset">
-              <li>
-                <a
-                  style={{ color: 'white' }}
-                  href="mailto:viral.sangani2011@gmail.com"
-                >
-                  viral.sangani2011@gmail.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://viralsangani.me"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Skype me"
-                  style={{ color: 'white' }}
-                >
-                  Skype
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="col-xs-12 col-sm-6 col-md-3 mb-xs-40">
-            <h4 className="mb-xs-20 mb-sm-40">Online</h4>
-            <ul className="list--reset">
-              <li>
-                <a
-                  href="https://github.com/viral-sangani/"
-                  target="_blank"
-                  title="Look through my Github profile"
-                  rel="noopener noreferrer"
-                  style={{ color: 'white' }}
-                >
-                  Github
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://twitter.com/ViralSangani5/"
-                  target="_blank"
-                  title="Look through my Twitter profile"
-                  rel="noopener noreferrer"
-                  style={{ color: 'white' }}
-                >
-                  Twitter
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-12">
-            <p
-              className="copyright footer-text"
-              style={{ textAlign: 'center' }}
-            >
-              <span>
-                " Give a man a program, frustrate him for a day. Teach a man to
-                program, frustrate him for a lifetime "
-              </span>
-              <br />
-              Made with ❤️ in GatsbyJS
-            </p>
-          </div>
-        </div>
+      </div>
+      <div className="flex flex-col items-center mx-auto relative max-w-screen-lg px-2 sm:px-6 lg:px-20 py-4">
+        <p
+          className="text-lg text-center text-light-font dark:text-dark-font"
+          style={{ fontFamily: 'Sriracha, cursive' }}
+        >
+          "Give a man a program, frustrate him for a day. Teach a man to
+          program, frustrate him for a lifetime"
+        </p>
+        <p className="pt-4 text-light-primary dark:text-dark-primary">
+          Made with ❤️ in GatsbyJS
+        </p>
       </div>
     </footer>
   )

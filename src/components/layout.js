@@ -1,15 +1,24 @@
-import React from 'react'
-import '../../static/style.css'
+import React, { useContext } from 'react'
 import '../../static/custom.css'
 import Navigation from './Navigation'
 import Footer from './Footer'
 import 'nprogress/nprogress.css'
-import { ThemeProvider } from './Context'
+import { ThemeProvider, ThemeContext } from './Context'
 import { StaticQuery, graphql } from 'gatsby'
 
 export default ({ children }) => {
   return (
     <ThemeProvider>
+      <Layout children={children} />
+    </ThemeProvider>
+  )
+}
+
+const Layout = ({ children }) => {
+  const { colorMode } = useContext(ThemeContext)
+  console.log(`colorMode`, colorMode)
+  return (
+    <div className={colorMode === 'dark' ? `dark` : ``}>
       <StaticQuery
         query={graphql`
           {
@@ -28,6 +37,6 @@ export default ({ children }) => {
       />
       {children}
       <Footer />
-    </ThemeProvider>
+    </div>
   )
 }

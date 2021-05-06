@@ -6,7 +6,7 @@ export default function Subscribe() {
   const [email, setEmail] = React.useState('')
 
   return (
-    <div className="subscribe">
+    <div className="subscribe pb-10 flex justify-center items-center">
       <div className="subscribe__image">
         <StaticQuery
           query={graphql`
@@ -42,13 +42,12 @@ export default function Subscribe() {
         </p>
       </div>
       <form
-        className="form"
+        className="form flex justify-center items-center"
         id="form"
         action="https://buttondown.email/api/emails/embed-subscribe/viral-sangani"
         method="post"
         target="popupwindow"
         onsubmit="window.open('https://buttondown.email/viral-sangani', 'popupwindow')"
-        class="embeddable-buttondown-form"
       >
         <label>
           Email &nbsp;&nbsp;&nbsp;

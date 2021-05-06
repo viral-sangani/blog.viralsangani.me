@@ -29,6 +29,7 @@ module.exports = {
     ],
   },
   plugins: [
+    'gatsby-plugin-postcss',
     `gatsby-plugin-material-ui`,
     {
       resolve: `gatsby-plugin-google-fonts`,
@@ -115,12 +116,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+
     {
       resolve: `gatsby-plugin-s3`,
       options: {

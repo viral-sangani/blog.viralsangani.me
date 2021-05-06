@@ -91,6 +91,7 @@ const Wrapper = styled.span`
 const SparkleWrapper = styled.span`
   position: absolute;
   display: block;
+
   @media (prefers-reduced-motion: no-preference) {
     animation: ${comeInOut} 700ms forwards;
   }
@@ -132,27 +133,27 @@ export const ATag = ({ href, children }) => {
   )
 }
 
-export const H3Tag = ({ children }) => {
-  return (
-    <h3 className="title__link" style={{ paddingTop: '20px' }}>
-      {children}
-    </h3>
-  )
+export const PreTag = ({ children }) => {
+  return <pre className="text-5xl py-5">{children}</pre>
 }
 
 export const H1Tag = ({ children }) => {
-  return (
-    <h3 className="title__link__h1" style={{ paddingTop: '20px' }}>
-      {children}
-    </h3>
-  )
+  return <h3 className="title__link__h1 text-5xl py-5">{children}</h3>
 }
 
 export const H2Tag = ({ children }) => {
+  return <h3 className="title__link text-4xl py-5">{children}</h3>
+}
+
+export const H3Tag = ({ children }) => {
+  return <h3 className="title__link text-3xl py-5">{children}</h3>
+}
+
+export const PTag = ({ children }) => {
   return (
-    <h3 className="title__link" style={{ paddingTop: '20px' }}>
+    <p className="py-4 text-light-font dark:text-dark-font text-xl">
       {children}
-    </h3>
+    </p>
   )
 }
 

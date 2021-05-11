@@ -77,8 +77,8 @@ const BlogIndex = (props) => {
                 } else return null
               })}
             </div>
-            <div className="hidden md:block lg:block xl:block w-full md:w-3/12 lg:w-3/12">
-              <div className="mt-10 ml-6 mb-10 p-3 flex items-center flex-col border-2 rounded-2xl border-light-primary dark:border-dark-primary">
+            <div className="hidden md:block lg:block xl:block w-full md:w-3/12 lg:w-3/12 mt-10">
+              <div className="sticky top-10 ml-6 mb-10 p-3 flex items-center flex-col border-2 rounded-2xl border-light-primary dark:border-dark-primary">
                 <span className="text-light-font dark:text-dark-font text-center pb-1 text-xl border-b-4 mb-4 border-light-primary dark:border-dark-primary ">
                   Tags
                 </span>

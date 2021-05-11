@@ -6,7 +6,7 @@ export default function Subscribe() {
   const [email, setEmail] = React.useState('')
 
   return (
-    <div className="subscribe pb-10 flex justify-center items-center">
+    <div className="subscribe pb-10 flex justify-center items-center mt-8">
       <div className="subscribe__image">
         <StaticQuery
           query={graphql`
@@ -32,10 +32,7 @@ export default function Subscribe() {
         </p>
       </div>
       <div className="subscribe__text" style={{ maxWidth: '80%' }}>
-        <p
-          className="subheading"
-          style={{ color: 'var(--font-shadow-primary)' }}
-        >
+        <p className="subheading text-black">
           This year I'm focusing big-time on writing content for web developers.
           Expect rich and bite-sized articles. There will be no spam and you can
           unsubscribe at any time.

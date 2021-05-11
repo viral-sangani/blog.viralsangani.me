@@ -21,9 +21,11 @@ const Navigaion = ({ image }) => {
               />
             </Link>
             <div className="flex flex-col pl-4">
-              <p className="text-light-font dark:text-dark-font text-lg">
-                Viral Sangani
-              </p>
+              <Link to={'/'}>
+                <p className="text-light-primary dark:text-dark-primary text-lg hover:text-light-font dark:hover:text-dark-font">
+                  Viral Sangani
+                </p>
+              </Link>
               <p className="text-light-font dark:text-dark-font text-md ">
                 Your Friendly Neighborhood Tech Guy
               </p>
@@ -32,27 +34,27 @@ const Navigaion = ({ image }) => {
           {/* Right Part */}
           <div className="hidden lg:block md:block">
             <div className="flex items-center">
-              <a
-                className="shadow-none px-4 text-lg text-light-font dark:text-dark-font"
-                href="/"
+              <Link
+                className="shadow-none px-4 text-lg text-light-font dark:text-dark-font hover:text-light-hover dark:hover:text-dark-primary"
+                to="/subscribe"
               >
                 Subscribe
-              </a>
+              </Link>
               <a
-                className="shadow-none px-4 text-lg text-light-font dark:text-dark-font"
+                className="shadow-none px-4 text-lg text-light-font dark:text-dark-font hover:text-light-hover dark:hover:text-dark-primary"
                 href="/"
               >
                 Github
               </a>
               <a
-                className="shadow-none px-4 text-lg text-light-font dark:text-dark-font"
+                className="shadow-none px-4 text-lg text-light-font dark:text-dark-font hover:text-light-hover dark:hover:text-dark-primary"
                 href="/"
               >
                 Contact
               </a>
               {colorMode === 'dark' ? (
                 <IconButton
-                  className="text-light-font dark:text-dark-font text-xl"
+                  className="text-light-font dark:text-dark-font text-xl hover:text-light-hover dark:hover:text-dark-primary"
                   onClick={() => {
                     setColorMode('light')
                   }}
@@ -61,7 +63,7 @@ const Navigaion = ({ image }) => {
                 </IconButton>
               ) : (
                 <IconButton
-                  className="text-light-font dark:text-dark-font text-xl"
+                  className="text-light-font dark:text-dark-font text-xl hover:text-light-hover dark:hover:text-dark-primary"
                   onClick={() => {
                     setColorMode('dark')
                   }}

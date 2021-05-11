@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 const Footer = ({ children }) => {
   return (
     <footer className="bg-light-background dark:bg-dark-background pt-12">
-      <div className="flex flex-col md:flex-row lg:flex-row justify-between flex-wrap mx-auto relative max-w-screen-lg px-2 sm:px-6 lg:px-20 py-4">
+      <div className="flex flex-col md:flex-row lg:flex-row justify-between flex-wrap mx-auto relative max-w-screen-lg px-4 sm:px-6 lg:px-20 py-4">
         <div className="flex flex-col">
           <p className="text-light-primary dark:text-dark-primary text-xl">
             Viral Sangani
@@ -49,7 +49,7 @@ const Footer = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center mx-auto relative max-w-screen-lg px-2 sm:px-6 lg:px-20 py-4">
+      <div className="flex flex-col items-center mx-auto relative max-w-screen-lg px-4 sm:px-6 lg:px-20 py-4">
         <p
           className="text-lg text-center text-light-font dark:text-dark-font"
           style={{ fontFamily: 'Sriracha, cursive' }}
@@ -58,7 +58,11 @@ const Footer = ({ children }) => {
           program, frustrate him for a lifetime"
         </p>
         <p className="pt-4 text-light-primary dark:text-dark-primary">
-          Made with ❤️ in GatsbyJS
+          Made with{' '}
+          <span role="img" aria-label="heart">
+            ❤️
+          </span>{' '}
+          in GatsbyJS
         </p>
       </div>
     </footer>

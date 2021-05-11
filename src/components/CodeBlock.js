@@ -47,7 +47,7 @@ export default function CodeBlock({ children, className }) {
 
         return (
           <div className="gatsby-highlight" data-language={language}>
-            <pre className={className} style={style}>
+            <Pre className={className} style={style}>
               {tokens.map((line, i) => (
                 <Line key={i} {...getLineProps({ line, key: i })}>
                   <LineNo>{i + 1}</LineNo>
@@ -68,7 +68,7 @@ export default function CodeBlock({ children, className }) {
                   </LineContent>
                 </Line>
               ))}
-            </pre>
+            </Pre>
           </div>
         )
       }}

@@ -16,7 +16,6 @@ export default ({ children }) => {
 
 const Layout = ({ children }) => {
   const { colorMode } = useContext(ThemeContext)
-  console.log(`colorMode`, colorMode)
   return (
     <div className={colorMode === 'dark' ? `dark` : ``}>
       <StaticQuery

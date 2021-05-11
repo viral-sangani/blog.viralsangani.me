@@ -17,14 +17,19 @@ const BlogIndex = (props) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="Blog" />
       <main className="bg-light-background dark:bg-dark-background pt-10">
-        <div className="flex flex-col mx-auto relative max-w-screen-lg px-2 sm:px-6 lg:px-20 py-4">
-          <div className="">
-            <div id="all-tags" style={{ textAlign: 'center' }}>
-              <Tags tags={tagNames} />
+        <div className="flex flex-col mx-auto relative max-w-screen-xl px-4 sm:px-6 lg:px-20 py-4">
+          <div className="flex flex-col md:flex-row lg:flex-row justify-center">
+            <div className="block md:hidden lg:hidden xl:hidden">
+              <div className="mb-2 w-full md:w-3/12 lg:w-3/12 flex items-center flex-col ">
+                <span className="text-light-font dark:text-dark-font text-center pb-1 text-xl border-b-4 mb-4 border-light-primary dark:border-dark-primary ">
+                  Tags
+                </span>
+                <div id="all-tags" className="text-start">
+                  <Tags tags={tagNames} />
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="pt-16">
-            <div className="">
+            <div className="pt-10 w-full md:w-9/12 lg:w-9/12 flex flex-row flex-wrap">
               {posts.map(({ node }) => {
                 if (node.frontmatter.publish) {
                   const title = node.frontmatter.title || node.fields.slug
@@ -44,6 +49,16 @@ const BlogIndex = (props) => {
                   )
                 } else return null
               })}
+            </div>
+            <div className="hidden md:block lg:block xl:block w-full md:w-3/12 lg:w-3/12">
+              <div className="mt-10 ml-6 mb-10 p-3 flex items-center flex-col border-2 rounded-2xl border-light-primary dark:border-dark-primary">
+                <span className="text-light-font dark:text-dark-font text-center pb-1 text-xl border-b-4 mb-4 border-light-primary dark:border-dark-primary ">
+                  Tags
+                </span>
+                <div id="all-tags" className="text-start">
+                  <Tags tags={tagNames} />
+                </div>
+              </div>
             </div>
           </div>
           <Subscribe />
@@ -65,7 +80,7 @@ export const pageQuery = graphql`
     allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
-          excerpt(pruneLength: 300)
+          excerpt(pruneLength: 130)
           fields {
             slug
           }
@@ -78,8 +93,8 @@ export const pageQuery = graphql`
             description
             featuredImage {
               childImageSharp {
-                fluid(quality: 90, maxWidth: 1920) {
-                  ...GatsbyImageSharpFluid_withWebp
+                fluid(quality: 90, maxWidth: 700) {
+                  ...GatsbyImageSharpFluid_noBase64
                 }
               }
             }

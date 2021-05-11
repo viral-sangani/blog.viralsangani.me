@@ -37,16 +37,11 @@ export const tagNames = [
   'ci-cd',
   'linux',
   'python',
-  'terminal',
-  'website',
   'javascript',
-  'opensource',
-  'cybersecurity',
   'django',
   'reactjs',
   'vim',
   'flutter',
-  'nginx',
 ]
 
 export const useRandomInterval = (callback, minDelay, maxDelay) => {

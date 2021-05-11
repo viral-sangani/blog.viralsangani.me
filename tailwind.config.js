@@ -8,7 +8,8 @@ module.exports = {
         borderRadius: ['responsive', 'hover'],
       },
       colors: {
-        'light-background': '#fff',
+        'light-background': '#EEF1F5',
+        'light-backgroundSecondary': '#FFFFFF',
         'light-font': '#000',
         'light-fontShadowPrimary': '#e1e1e1',
         'light-fontShadowSecondary': '#bab8b8',
@@ -16,7 +17,9 @@ module.exports = {
         'light-hover': '#0629ee',
         'light-color': '#000',
         'light-fontSecondary': '#7f7a7a',
+
         'dark-background': '#0E151C',
+        'dark-backgroundSecondary': '#1E272F',
         'dark-font': '#e1e1e1',
         'dark-fontShadowPrimary': '#000',
         'dark-fontShadowSecondary': '#757575',

@@ -728,21 +728,21 @@ blockquote:before,
 blockquote:after {
   position: absolute;
   color: #f1efe6;
-  font-size: 8rem;
+  font-size: 4rem;
   width: 4rem;
   height: 4rem;
 }
 
 blockquote:before {
   content: '“';
-  left: -5rem;
+  left: -2rem;
   top: -2rem;
 }
 
 blockquote:after {
   content: '”';
-  right: -5rem;
-  bottom: 1rem;
+  right: -3rem;
+  bottom: -2rem;
 }
 
 cite {
@@ -756,7 +756,7 @@ cite {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 35px 0;
+  margin: 20px 0;
 }
 
 .token.operator {
@@ -765,4 +765,25 @@ cite {
 
 button:focus {
   outline: 0;
+}
+
+.home-hero {
+  animation: float 2s infinite ease-in;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(1rem);
+    -webkit-transform: translateY(1rem);
+  }
+
+  100% {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
 }

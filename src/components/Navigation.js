@@ -42,13 +42,15 @@ const Navigaion = ({ image }) => {
               </Link>
               <a
                 className="shadow-none px-4 text-lg text-light-font dark:text-dark-font hover:text-light-hover dark:hover:text-dark-primary"
-                href="/"
+                href="https://github.com/viral-sangani"
+                target="_blank"
               >
                 Github
               </a>
               <a
                 className="shadow-none px-4 text-lg text-light-font dark:text-dark-font hover:text-light-hover dark:hover:text-dark-primary"
-                href="/"
+                target="_blank"
+                href="mailto:viral.sangani2011@gmail.com"
               >
                 Contact
               </a>

@@ -7,16 +7,43 @@ import SEO from '../components/seo'
 import BlogCard from '../components/BlogCard'
 import { tagNames } from '../components/utils'
 import Subscribe from '../components/Subscribe'
+import Img from 'gatsby-image/withIEPolyfill'
 
 const BlogIndex = (props) => {
   const { data, location } = props
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMdx.edges
-
+  const homeHeroImg = data.allImageSharp.nodes[0].fluid
+  console.log(`homeHeroImg`, homeHeroImg)
+  const latestPost = posts[0]
+  console.log(`latestPost`, latestPost)
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Blog" />
-      <main className="bg-light-background dark:bg-dark-background pt-10">
+      <main className="bg-light-background dark:bg-dark-background pt-5">
+        <div className="flex flex-col md:flex-row lg:flex-row items-center justify-between xl-flex-row mx-auto relative max-w-screen-xl px-4 sm:px-6 lg:px-20 py-4 mt-8 md:mt-0 lg:mt-0">
+          <div className="w-10/12 md:w-6/12 lg:w-6/12 xl:w-6/12 ">
+            <div className="quote-body">
+              <blockquote className="text-xl md:text-2xl lg:text-3xl xl:text-3xl">
+                A bug is never just a mistake. It represents something bigger.
+                An error of thinking that makes you who you are.
+              </blockquote>
+            </div>
+            <div className="quote-body">
+              <cite>-- Mr. Robot</cite>
+            </div>
+          </div>
+
+          <div className="w-10/12 md:w-5/12 lg:w-5/12 xl:w-5/12">
+            <Img
+              Tag="div"
+              fadeIn
+              objectFit="scale-down"
+              className="h-full w-full rounded-2xl home-hero"
+              fluid={homeHeroImg}
+            />
+          </div>
+        </div>
         <div className="flex flex-col mx-auto relative max-w-screen-xl px-4 sm:px-6 lg:px-20 py-4">
           <div className="flex flex-col md:flex-row lg:flex-row justify-center">
             <div className="block md:hidden lg:hidden xl:hidden">
@@ -29,7 +56,7 @@ const BlogIndex = (props) => {
                 </div>
               </div>
             </div>
-            <div className="pt-10 w-full md:w-9/12 lg:w-9/12 flex flex-row flex-wrap">
+            <div className="pt-6 w-full md:w-9/12 lg:w-9/12 flex flex-row flex-wrap">
               {posts.map(({ node }) => {
                 if (node.frontmatter.publish) {
                   const title = node.frontmatter.title || node.fields.slug
@@ -99,6 +126,15 @@ export const pageQuery = graphql`
               }
             }
           }
+        }
+      }
+    }
+    allImageSharp(
+      filter: { fixed: { originalName: { eq: "home-hero.png" } } }
+    ) {
+      nodes {
+        fluid(quality: 90, maxWidth: 700) {
+          ...GatsbyImageSharpFluid_noBase64
         }
       }
     }

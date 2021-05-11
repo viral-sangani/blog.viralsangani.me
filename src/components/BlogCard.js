@@ -17,15 +17,17 @@ const BlogCard = ({
     <section className="md:w-6/12 lg:w-6/12 w-full ">
       <div className="flex flex-col flex-wrap bg-light-backgroundSecondary dark:bg-dark-backgroundSecondary p-4 mx-1 my-4 rounded-2xl border-2 border-transparent hover:border-light-primary dark:hover:border-dark-primary">
         <div className="w-full mb-7 md:mr-6 lg:mr-6">
-          <Img
-            Tag="div"
-            fadeIn
-            durationFadeIn={1500}
-            objectFit="cover"
-            className="h-full w-full rounded-2xl"
-            fluid={hero}
-            backgroundColor={`#fff`}
-          />
+          <Link to={`${slug}`}>
+            <Img
+              Tag="div"
+              fadeIn
+              durationFadeIn={1500}
+              objectFit="cover"
+              className="h-full w-full rounded-2xl"
+              fluid={hero}
+              backgroundColor={`#fff`}
+            />
+          </Link>
         </div>
         <div className="w-full pr-4">
           <header className="">

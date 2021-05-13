@@ -16,7 +16,7 @@ export default function TagPost(props) {
       <SEO title={`#${tag} | Blog`} />
       <main className="bg-light-background dark:bg-dark-background pt-10">
         <div className="flex flex-col mx-auto relative max-w-screen-lg px-4 sm:px-6 lg:px-20 py-4">
-          <div className="flex justify-between">
+          <div className="flex flex-col md:flex-row lg-flex-row justify-between">
             <div className="mb-8">
               <Link
                 to="/"

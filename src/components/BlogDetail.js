@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import BlogComment from './BlogComment'
 import Tags from './Tags'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import RenderMdx from './RederMdx'
@@ -69,10 +68,10 @@ const BlogDetail = ({
             </RenderMdx>
             <div className="content-item__body user-content"></div>
 
-            <ul className="flex flex-nowrap justify-between list-none p-0 text-light-font dark:text-dark-font text-xl">
+            <ul className="flex md:flex-nowrap lg:flex-nowrap flex-wrap justify-between list-none p-0 text-light-font dark:text-dark-font text-xl">
               {previous && (
                 <Link to={`${previous.fields.slug}`}>
-                  <li className="border-2 rounded-xl hover:bg-dark-primary border-light-primary dark:border-dark-primary p-4 text-light-font dark:text-dark-font mr-2 cursor-pointer hover:font-bold">
+                  <li className="border-2 rounded-xl hover:bg-dark-primary my-2 border-light-primary dark:border-dark-primary p-4 text-light-font dark:text-dark-font mr-2 cursor-pointer hover:font-bold">
                     ← {previous.frontmatter.title}
                   </li>
                 </Link>
@@ -80,7 +79,7 @@ const BlogDetail = ({
 
               {next && (
                 <Link to={`${next.fields.slug}`}>
-                  <li className="border-2 rounded-xl hover:bg-dark-primary border-light-primary dark:border-dark-primary p-4 text-light-font dark:text-dark-font mr-2 cursor-pointer hover:font-bold">
+                  <li className="border-2 rounded-xl hover:bg-dark-primary my-2 border-light-primary dark:border-dark-primary p-4 text-light-font dark:text-dark-font mr-2 cursor-pointer hover:font-bold">
                     {next.frontmatter.title} →
                   </li>
                 </Link>

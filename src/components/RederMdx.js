@@ -11,6 +11,7 @@ import {
   H1Tag,
   H2Tag,
   PTag,
+  Note,
 } from './ContentUtils'
 
 const components = {
@@ -25,6 +26,7 @@ const components = {
   p: PTag,
   Quote: Quote,
   QuoteAuthor: QuoteAuthor,
+  Note: Note,
 }
 
 export default function RederMdx(props) {

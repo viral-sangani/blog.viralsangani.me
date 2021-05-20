@@ -36,13 +36,12 @@ p code,
 li code {
   font-size: 1.125rem;
   line-height: 2.56rem;
-  background-color: #fafafa;
-  border: 1px solid #c9d2d9;
+  background-color: #1e272f;
   border-radius: 3px;
-  color: #3b3a3a;
+  color: #ffffff;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   vertical-align: baseline;
-  padding: 0.08rem 0.4rem;
+  padding: 0.08rem 0.55rem;
   white-space: nowrap;
 }
 

@@ -13,6 +13,7 @@ export const colorList = [
 export const COLORS = {
   light: {
     background: '#fff',
+    backgroundSeconday: '#FFFFFF',
     font: '#000',
     fontShadowPrimary: '#e1e1e1',
     fontShadowSecondary: '#bab8b8',
@@ -22,6 +23,7 @@ export const COLORS = {
   },
   dark: {
     background: '#262525',
+    backgroundSeconday: '#1E272F',
     font: '#e1e1e1',
     fontShadowPrimary: '#000',
     fontShadowSecondary: '#757575',

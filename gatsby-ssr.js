@@ -2,7 +2,7 @@ import React from 'react'
 import { COLORS } from './src/components/utils'
 
 const MagicScriptTag = () => {
-    const codeToRunOnClient = `
+  const codeToRunOnClient = `
         (function() {
             function getInitialColorMode() {
                 const persistedColorPreference = window.localStorage.getItem('color-mode')
@@ -61,9 +61,9 @@ const MagicScriptTag = () => {
             );
             root.style.setProperty('--initial-color-mode', colorMode);
             })()`
-    // eslint-disable-next-line react/no-danger
-    return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />
+  // eslint-disable-next-line react/no-danger
+  return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />
 }
 export const onRenderBody = ({ setPreBodyComponents }) => {
-    setPreBodyComponents(<MagicScriptTag />)
+  setPreBodyComponents(<MagicScriptTag />)
 }

@@ -11,7 +11,7 @@ export default function Tags({ tags }) {
           <React.Fragment key={tag}>
             <Link
               to={`/tags/${tag}`}
-              className="tag text-base lg:text-xl"
+              className="categoryTag text-base lg:text-xl"
               style={{
                 backgroundColor: tagColor,
                 cursor: 'pointer',

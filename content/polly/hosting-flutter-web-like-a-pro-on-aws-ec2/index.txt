@@ -1,0 +1,74 @@
+Flutter Web Hosting
+
+Lately I have been trying my hands on Flutter and Flutter Web. Honestly only flutter 😅. Being a React fan I was curious about Flutter web and its capabilities. I would not say Flutter web is better than say React or Veu but it's not worse either. If you are a Flutter mobile developer and want to try something in web, then you can approach Flutter web. Flutter web is still in beta, and there are so many things changing in flutter web eco-system. The biggest issue I faced while developing Flutter web is the small community (only for web). If you are facing some issue, which I think you will, there is not enough question or article in the internet.
+
+Keeping that aside, let's talk about hosting simple flutter website. For this I consider that you have a flutter web project ready with you. If you don't and just want to try hosting the website in nginx then I have a website ready for you here. I would be using AWS EC2 as a Linux machine to host this website. To know how to start with AWS EC2 you can follow this article.
+
+Getting Started
+
+SSH to your server and update the linux followed by installing nginx.
+
+
+If you want some in-depth knowledge then I'll be writing a detailed blog in Nginx and it's configuration soon.
+
+Do we need Flutter SDK on our server to build the website? 🤔
+
+It depends. If you have a powerful server and want to setup a proper CI/CD then why not. But if you are working with EC2-mini or similar then installing Flutter SDK in server is not an option because of resource deficiency.
+
+Anyway Flutter SDK will only help you to make quick changes and test those change in production like a pro, but do we really need that?
+And since flutter web is in it's early stages, we do not have and deployment service like Netlify or Vercel. So for now we can build locally with a simple command,
+
+
+flutter build web
+
+This command will create necessary javascript and css file for the website and store it in `[project]/build/web` directory. Now if you want you can create a CI/CD to copy the `build/web` folder to our EC2 server or else just for testing part we can do that manually using following command.
+
+Replace `ec2-65-0-.ap-south-1.compute.amazonaws.com` with your host url. After this you will have a web folder in your home directory in EC2.
+You can use plain old git method to send you code to your server, in which you push you code to Github and pull it from server. But for demo purposes I am doing `scp` to server. This article is not about best practises for Flutter web, so I won't go deep in it.
+
+Configuring Nginx
+
+Now the climax starts, we have our web build folder on our server and we want to host it using nginx. First make sure you have `/var/www/html` folder. Let's say our project name is `flutter-website` . Now we need to create a directory named `flutter-website` in `/var/www/html`.
+
+cd /var/www/html
+
+mkdir flutter-website
+
+Copy the website build files to this `flutter-website` folder.
+Caution: You might need the help from `sudo` to copy the files here.
+
+Next, you need to open `/etc/nginx/sites-enabled/default` in vim. To learn more about vim, I have a vim article series here. Once file is opened edit the root directory to `/var/www/html/flutter-website`.
+
+
+Here is how it should look after editing the file. This file does not have domain configuration.
+Once you have made those changes, run the following command to check for any errors in you nginx config file.
+
+sudo nginx -t
+
+If all is well then restart and enable nginx server.
+
+sudo service nginx restart
+sudo service nginx enable
+
+This should restart your server and get the updated config file. When all is done, you can goto your VPS/EC2 IP address to see the website. Here is my example.
+
+Domain setup
+
+Most of the website need to have domain setup and for that we need to tweak a little but in our default config file. To do so, open the default config file again and add `server_name` parameter in it.
+
+
+When you add a domain name, then you need to create a new config file in `/etc/nginx/sites-enabled/` directory. Make sure that your config file name ends with `.conf` extension.
+
+Once you have create the file, test the config file using,
+
+sudo nginx -t
+
+If all goes well, then restart nginx server,
+
+sudo service nginx restart
+
+Something extra
+
+If you are doing to attach domain then make sure to update the nameservers (assuming that you are using AWS Route53 for domain) and add a Alias record for you EC2/VPS in dashboard.
+
+If you want to add SSL certificate too, then use Certbot. It provide free SSL certificate and automate the process. You can read more about Certbot and nginx here.

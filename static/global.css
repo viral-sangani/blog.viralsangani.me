@@ -2,19 +2,20 @@
 @tailwind base;
 @tailwind components;
 
-@layer base {
-  @font-face {
-    font-family: 'Wotfard';
-    src: local('Wotfard'),
-      url(./fonts/Wotfard_Regular/wotfard-regular-webfont.ttf) format('ttf');
-  }
-  @font-face {
-    font-family: 'Futura';
-    src: url('fonts/futura/futur.ttf');
-    src: local('Futura'), url('fonts/futura/futur.ttf') format('ttf');
-  }
+@font-face {
+  font-family: 'Wotfard';
+  src: local('Wotfard'),
+    url(./fonts/Wotfard_Regular/wotfard-regular-webfont.ttf) format('ttf');
+}
+@font-face {
+  font-family: 'Futura';
+  src: url('fonts/futura/futur.ttf');
+  src: local('Futura'), url('fonts/futura/futur.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
 
-  /* @font-face {
+/* @font-face {
     font-family: 'Futura';
     src: url('fonts/futura-book.eot');
     src: local('_'), url('fonts/futura-book.woff') format('woff'),
@@ -23,7 +24,6 @@
     font-weight: normal;
     font-style: normal;
   } */
-}
 
 @tailwind utilities;
 

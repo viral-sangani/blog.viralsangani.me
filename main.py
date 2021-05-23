@@ -1,12 +1,15 @@
-from os import listdir
-from os.path import isfile, join
 from os import walk
 import json
 import boto3
 import sys
 
+session = boto3.Session(
+    aws_access_key_id="AKIA2OVFE26QA6LMK46U",
+    aws_secret_access_key="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",
+)
+
 def checkBlogSSMLInS3():
-    s3 = boto3.resource('s3')
+    s3 = session.resource('s3')
     bucket= s3.Bucket(name="polly-blog-data")
     pollyListFromS3 = []
     for obj in bucket.objects.filter():
@@ -24,7 +27,7 @@ def checkBlogSSMLInS3():
 
 def polly_handler(event):
     try:
-        polly = boto3.client("polly")
+        polly = session.client("polly")
         dirName = event['dirName']
         dirPrefix = event['dirPrefix']
         data = open(dirPrefix + "/" + dirName + "/index.txt", 'r').read()
@@ -57,7 +60,7 @@ def polly_handler(event):
         }
 
 def delete_s3(pollyUri):
-    s3 = boto3.resource('s3')
+    s3 = session.resource('s3')
     filename = pollyUri.split("/")[-1]
     s3.Object('polly-blog-data',filename.split(".")[0]+".mp3").copy_from(CopySource='polly-blog-data/{}'.format(filename))
     s3.Object('polly-blog-data',filename).delete()

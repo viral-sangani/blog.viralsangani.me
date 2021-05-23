@@ -68,7 +68,7 @@ const Sparkle = ({ size, color, style }) => {
 
 export const Note = ({ children }) => {
   return (
-    <div className="bg-light-backgroundSecondary dark:bg-dark-backgroundSecondary py-2 px-10 rounded-lg border-l-4 border-light-primary dark:border-dark-primary relative mt-10 mb-8">
+    <div className="bg-light-backgroundSecondary dark:bg-dark-backgroundSecondary py-2 px-5 md:px-8 lg:px-10 rounded-lg border-l-4 border-light-primary dark:border-dark-primary relative mt-10 mb-8">
       <p className="py-4 text-light-font dark:text-dark-font text-xl leading-8">
         {children}
       </p>

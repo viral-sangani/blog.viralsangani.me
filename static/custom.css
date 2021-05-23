@@ -798,6 +798,16 @@ button:focus {
   grid-template-rows: 1fr 2fr 1fr;
   height: 100%;
 }
+
+@media only screen and (max-width: 600px) {
+  .blog1-wrapper {
+    display: grid;
+    grid-template-columns: 1fr min(150px, 100%) 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    height: 100%;
+  }
+}
+
 .blog1-wrapper > * {
   display: grid;
   place-content: center;
@@ -843,8 +853,8 @@ button:focus {
 .blog1-container {
   height: 450px;
   min-height: 200px;
-  width: 500px;
-  min-width: 308px;
+  /* width: 500px;
+  min-width: 308px; */
   position: relative;
   overflow: auto;
   resize: both;

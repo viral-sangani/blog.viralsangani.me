@@ -11,7 +11,7 @@ publish: true
 It was difficult back in old times to create <Sparkles>Holy Grail Layout</Sparkles>, but not anymore, using CSS Grid. If you are developing a website since maybe 5-6 years ago, you can relate to this. Creating the website layout without using Flexbox and Grids. The only tools at developers' disposal were tables and floats, neither was up to the standard to create flexible layouts. It was technically possible, but require a few <Special>Jugaad</Special> (Hindi word for Makeshifter).
 
 <div className="flex flex-col items-center justify-center">
-  <div className="blog1-container">
+  <div className="blog1-container w-full md:w-4/6 lg:w-4/6">
     <div className="blog1-wrapper">
       <div className="header">Header</div>
       <div className="nav">Nav</div>
@@ -46,7 +46,7 @@ You might have seen a fixed layout with content in the center and extra padding 
 You can see the fixed-width content in the middle. It does not necessarily have to be fixed into that container. You can make custom items to break free and fill all available space.
 
 <div className="flex flex-col items-center justify-center">
-  <div className="blog1-container">
+  <div className="blog1-container w-full md:w-4/6 lg:w-4/6">
     <div className="blog1-wrapper" style={{ gridTemplateRows: '2fr 1fr 2fr' }}>
       <div className="nav">Nav</div>
       <div className="main">Main</div>
@@ -84,7 +84,7 @@ This will only create the columns, but the items in those columns define the wid
 
 <div className="flex flex-col items-center justify-center">
   <div
-    className="blog1-container"
+    className="blog1-container w-full md:w-4/6 lg:w-4/6"
     style={{
       height: 200,
       minWidth: 10,
@@ -131,7 +131,7 @@ Here, we are saying that I want to add all my content in the second column. <Spe
 
 <div className="flex flex-col items-center justify-center">
   <div
-    className="blog1-container"
+    className="blog1-container w-full md:w-4/6 lg:w-4/6"
     style={{
       height: 350,
       resize: 'horizontal',

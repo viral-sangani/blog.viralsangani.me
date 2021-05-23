@@ -66,7 +66,7 @@ const BlogDetail = ({
             <RenderMdx>
               <MDXRenderer>{content}</MDXRenderer>
             </RenderMdx>
-            <div className="content-item__body user-content"></div>
+            <div className="user-content"></div>
 
             <ul className="flex md:flex-nowrap lg:flex-nowrap flex-wrap justify-between list-none p-0 text-light-font dark:text-dark-font text-xl">
               {previous && (

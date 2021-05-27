@@ -171,7 +171,7 @@ module.exports = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://viralsangani.me',
-        sitemap: 'https://viralsangani.me/sitemap.xml',
+        p: 'https://viralsangani.me/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },

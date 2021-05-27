@@ -7,6 +7,7 @@ import SocialShare from './SocialShare'
 import Subscribe from './Subscribe'
 import PollyAudioPlayer from './PollyAudioPlayer'
 import Img from 'gatsby-image'
+import HitCounter from './HitCounter'
 
 const BlogDetail = ({
   excerpt,
@@ -88,9 +89,9 @@ const BlogDetail = ({
           </div>
         </div>
       </section>
-
       <div className="flex flex-col justify-center items-center mx-auto relative max-w-screen-lg px-4 sm:px-6 lg:px-20 py-4">
-        <div className="flex justify-between my-4">
+        <div className="flex items-center justify-between my-4">
+          <HitCounter slug={slug} />
           <SocialShare slug={slug} excerpt={excerpt} title={title} />
         </div>
         {/* <BlogComment title={title} id={id} /> */}

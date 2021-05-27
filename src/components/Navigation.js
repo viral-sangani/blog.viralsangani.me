@@ -8,8 +8,8 @@ import { ThemeContext } from './Context'
 const Navigaion = ({ image }) => {
   const { colorMode, setColorMode } = useContext(ThemeContext)
   return (
-    <nav class="bg-light-background dark:bg-dark-background">
-      <div class="max-w-screen-lg mx-auto px-2 sm:px-6 lg:px-20 py-4">
+    <nav className="bg-light-background dark:bg-dark-background">
+      <div className="max-w-screen-lg mx-auto px-2 sm:px-6 lg:px-20 py-4">
         <div className="flex flex-row justify-between items-center">
           {/* Left Part */}
           <div className="flex flex-row items-center">

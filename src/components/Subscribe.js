@@ -44,10 +44,7 @@ export default function Subscribe() {
         action="https://buttondown.email/api/emails/embed-subscribe/viral-sangani"
         method="post"
         target="popupwindow"
-        onSubmit={window.open(
-          'https://buttondown.email/viral-sangani',
-          'popupwindow'
-        )}
+        onSubmit="window.open('https://buttondown.email/viral-sangani', 'popupwindow')"
       >
         <label>
           Email &nbsp;&nbsp;&nbsp;

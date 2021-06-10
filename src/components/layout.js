@@ -1,10 +1,10 @@
+import { graphql, StaticQuery } from 'gatsby'
+import 'nprogress/nprogress.css'
 import React, { useContext } from 'react'
 import '../../static/custom.css'
-import Navigation from './Navigation'
+import { ThemeContext, ThemeProvider } from './Context'
 import Footer from './Footer'
-import 'nprogress/nprogress.css'
-import { ThemeProvider, ThemeContext } from './Context'
-import { StaticQuery, graphql } from 'gatsby'
+import Navigation from './Navigation'
 
 export default ({ children }) => {
   return (

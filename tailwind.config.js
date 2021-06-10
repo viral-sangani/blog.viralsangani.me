@@ -29,7 +29,7 @@ module.exports = {
         'dark-fontSecondary': '#999898',
       },
       fontFamily: {
-        sans: ['Futura', 'Wotfard'],
+        sans: ["'Nunito', sans-serif", 'Futura', 'Wotfard'],
       },
     },
   },

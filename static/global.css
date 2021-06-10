@@ -2,20 +2,33 @@
 @tailwind base;
 @tailwind components;
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap');
+
 @font-face {
   font-family: 'Wotfard';
   src: local('Wotfard'),
     url(./fonts/Wotfard_Regular/wotfard-regular-webfont.ttf) format('ttf');
 }
+
 @font-face {
+  font-family: 'Futura';
+  src: url(https://cdn.jsdelivr.net/npm/futura-font@1.0.0/FuturaBT-Medium.ttf)
+    format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* @font-face {
   font-family: 'Futura';
   src: url('fonts/futura/futur.ttf');
   src: local('Futura'), url('fonts/futura/futur.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
-}
+} */
+
 body {
-  font-family: 'Futura', 'Wotfard';
+  font-family: 'Futura', 'Nunito', sans-serif, 'Wotfard';
+  font-weight: 600;
 }
 
 /* @font-face {

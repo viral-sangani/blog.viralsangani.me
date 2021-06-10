@@ -1,9 +1,8 @@
-import React from 'react'
 import { graphql } from 'gatsby'
-
+import React from 'react'
+import BlogDetail from '../components/BlogDetail'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import BlogDetail from '../components/BlogDetail'
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
@@ -12,7 +11,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title={post.frontmatter.title} description={post.excerpt} />
+      <SEO
+        title={post.frontmatter.title}
+        description={post.excerpt}
+        image={post.frontmatter.featuredImage.childImageSharp.fixed.srcWebp}
+      />
 
       <BlogDetail
         excerpt={post.excerpt}
@@ -57,6 +60,9 @@ export const pageQuery = graphql`
         description
         featuredImage {
           childImageSharp {
+            fixed {
+              srcWebp
+            }
             fluid(quality: 90, maxWidth: 1920) {
               ...GatsbyImageSharpFluid_withWebp
             }

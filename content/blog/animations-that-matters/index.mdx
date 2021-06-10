@@ -1,0 +1,476 @@
+---
+title: Animations that matters
+date: '2021-06-01T00:08:03.284Z'
+description: 'The small animation which makes big impact.'
+featuredImage: be-anonymous-create-your-own-proxy-server-with-aws-ec2.png
+tags: ['reactjs', 'frontend']
+publish: false
+---
+
+import {
+  IconHoverAnimation,
+  EmojiHoverAnimation,
+  IconHoverAnimationWithoutSpring,
+  NavItemHoverAnimation
+} from '../../../src/blogComponents/HoverAnimation'
+import { Icon } from 'react-icons-kit'
+import { star } from 'react-icons-kit/feather/star'
+import { zap } from 'react-icons-kit/feather/zap'
+import { bell } from 'react-icons-kit/feather/bell'
+import { gift } from 'react-icons-kit/feather/gift'
+import { thumbsUp } from 'react-icons-kit/feather/thumbsUp'
+import { twitter } from 'react-icons-kit/feather/twitter'
+import { home } from 'react-icons-kit/fa/home'
+
+I think hover animations are too <Special>underrated.</Special> Hover animations are one of the mode beautiful way to make any application feel responsive and dynamic. I agree hover animation is a small thing to consider while creating a big project, but it's these king of small details that, in aggregate make a product <Sparkles>great.</Sparkles>
+
+Any developer can create a simple hover animations with `transitions` and `transform` CSS properties, but those animations are not neat and pixel perfect. I this article we will see have to make a simple hover animation look great with using `spring` functions.
+
+Use case of using `spring` in CSS animations are infinite. Below are some of the examples I have created.
+
+<div className="w-full flex flex-col justify-center items-center">
+  <div className="flex justify-center items-center">
+    <div calssName="mx-10">
+      <IconHoverAnimation
+        icon={thumbsUp}
+        size={40}
+        className="text-white"
+        hoverConfig={{ y: 5, rotation: 5 }}
+      />
+      <IconHoverAnimation
+        icon={thumbsUp}
+        size={40}
+        className="text-yellow-300"
+        hoverConfig={{ y: 5, rotation: 5 }}
+      />
+      <IconHoverAnimation
+        icon={thumbsUp}
+        size={40}
+        className="text-yellow-500"
+        hoverConfig={{ y: 5, rotation: 5 }}
+      />
+      <IconHoverAnimation
+        icon={thumbsUp}
+        size={40}
+        className="text-red-600"
+        hoverConfig={{ y: 5, rotation: 5 }}
+      />
+    </div>
+    <div className="mx-10">
+      <IconHoverAnimation
+        icon={twitter}
+        size={40}
+        className="text-blue-500"
+        hoverConfig={{ rotation: 15 }}
+      />
+    </div>
+    <div className="">
+      <EmojiHoverAnimation />
+    </div>
+  </div>
+
+  <span className="text-base text-light-primary dark:text-dark-primary py-2">
+    (Hover over above icons to see the magic.)
+  </span>
+</div>
+
+## Let's start
+
+Since react is such a roburst and flexible framework, which provides a component-driven architecture to implement UI and it's elementes, we will look into creating flexible componented to implment such animations so that it can be used in multiple places.
+
+To start with we will create a component and let's call it `<HoverAnimation />`.
+
+```jsx
+const HoverAnimation = ({ rotation = 0, timing = 150, children }) => {
+
+  const [hasAnimated, setHasAnimated] = useState(false)
+
+  const style = {
+    transform: hasAnimated ? `rotate(${rotation}deg)` : `rotate(0deg)`,
+    transition: `transform ${timing}ms`,
+    display: 'inline-block',
+    backfaceVisibility: 'hidden',
+  }
+
+  useEffect(() => {
+    if (!hasAnimated) {
+      return
+    }
+    const timeoutId = window.setTimeout(() => {
+      setHasAnimated(false)
+    }, timing)
+    return () => {
+      window.clearTimeout(timeoutId)
+    }
+  }, [hasAnimated, timing])
+
+  const trigger = () => {
+    setHasAnimated(true)
+  }
+
+  return (
+    <div onMouseEnter={trigger} style={style}>
+      {children}
+    </div>
+  )
+}
+```
+
+Let's break down the code. Basically we wanted to create a component which will change it's state on mouse hover. In doing so we are starting a timer, which eventually set the component to it's original place when timer end, irrespective of whether mouse is still hovering that component or not. This create a cool looking animation, not the one which stop animating as soon as you remove your mouse from that component.
+
+TO keep the state of animation we have creates a state `hasAnimated`.
+
+```jsx 
+  const [hasAnimated, setHasAnimated] = useState(false)
+```
+
+We accept a `children` in component and wrap that children in `div`, so that we can apply animation and hover event trigger to that element.
+
+```jsx
+  // used to set hasAnimated value to true, and start the animation
+
+  const trigger = () => {
+    setHasAnimated(true)
+  }
+
+  return (
+    <div onMouseEnter={trigger} style={style}>
+      {children}
+    </div>
+  )
+```
+
+On top of this, we have an `useEffect` hook, which will re-render when `hasAnimated` changes it's value. So practically, when someone hover over the element, `trigger` function will set `hasAnimated` to `true`, this will trigger `useEffect`, which in return start a timer which will set `hasAnimated` value to `false`.
+
+```jsx
+  useEffect(() => {
+    if (!hasAnimated) {
+      return
+    }
+    const timeoutId = window.setTimeout(() => {
+      setHasAnimated(false) // Set hasAnimated value to false after some time
+    }, timing)
+    return () => {
+      window.clearTimeout(timeoutId) // make sure to remove timeout when component is removed from tree.
+    }
+  }, [hasAnimated, timing]) // Only runs when value of hasAnimated changes.
+```
+
+We have talked about `hasAnimated` but let's see what it actully does. `hasAnimated` is used inside a style object, which changes the style of component depending in value of `hasAnimated`. We rotate the element if `hasAnimated` is `true` and move it back to it's origin place, i.e. `0deg` when `hasAnimated` is `false`. To animate this nicely we have added `transition` property to it. Timing for transition is taken as an input for the component in ordeer to make this component more flexible. Doing so we have full controle of how long and upto what degree should the animation go.
+
+```jsx
+const style = {
+    transform: hasAnimated ? `rotate(${rotation}deg)` : `rotate(0deg)`,
+    transition: `transform ${timing}ms`,
+    display: 'inline-block',
+    backfaceVisibility: 'hidden',
+  }
+```
+
+<Note varient="success">
+  <li>
+    We are using <Special>backfaceVisibility: hidden</Special> to use hardware acceleration in animations. Use can read more about <Special>back-face-visibility</Special> <a href="https://www.w3schools.com/cssref/css3_pr_backface-visibility.asp">here</a>.
+  </li>
+  <li>
+    We need to use <Special>inline-block</Special> instead of <Special>inline</Special> because <Special>inline</Special> elements can not be transformed. 
+  </li>
+</Note>
+
+This is how we will use `HoverAnimation` component.
+
+```jsx
+  <HoverAnimation rotation={20} timing={200}>
+      <Icon icon="twitter" />
+  </HoverAnimation>
+```
+
+This is what it would look line:
+
+<div className="w-full flex flex-col justify-center items-center">
+  <div className="flex justify-center items-center">
+    <div className="mx-3">
+      <IconHoverAnimationWithoutSpring
+        icon={twitter}
+        size={40}
+        className="text-blue-500"
+        hoverConfig={{ rotation: 15 }}
+      />
+    </div>
+    <div className="mx-3">
+      <IconHoverAnimationWithoutSpring
+        icon={zap}
+        size={40}
+        className="text-yellow-500"
+        hoverConfig={{ rotation: 15 }}
+      />
+    </div>
+  </div>
+
+  <span className="text-base text-light-primary dark:text-dark-primary py-2">
+    (Hover over above icons to see the magic.)
+  </span>
+</div>
+
+While this is awesome to use with just 3 lines, but it feels like robotic and rigid. TO make it more natural and fluid, we can add pinch of spring in it. Let's see how to implement Spring to our component.
+
+For this, we will be using [react-spring](https://react-spring.io/). react-spring provides modern hooks to easily add spring effects to your animations.
+
+To install just do,
+
+```bash
+yarn add react-spring 
+
+# or if you are npm person
+npm install react-spring
+```
+
+After adding react-spring, we need to modify out `HoverAnimation` component
+
+```jsx
+
+import { animated, useSpring } from 'react-spring';
+
+const HoverAnimation = ({ rotation = 0, timing = 150, children }) => {
+
+  const [hasAnimated, setHasAnimated] = React.useState(false);
+
+  const style = useSpring({
+    display: 'inline-block',
+    backfaceVisibility: 'hidden',
+    transform: hasAnimated
+      ? `rotate(${rotation}deg)`
+      : `rotate(0deg)`,
+  });
+
+  React.useEffect(() => {
+    // Same as before
+  }, [hasAnimated, timing]);
+
+  const trigger = () => {
+    // Same as before
+  };
+
+  return (
+    <animated.span onMouseEnter={trigger} style={style}>
+      {children}
+    </animated.span>
+  );
+};
+```
+
+Let's start from the top. We import `animated` and `useSpring` hook from `react-spring`. Now instead of creating an object for style, we will use `useSpring` and pass the style in this hook. Hook will do it's ✨magic✨ and returns the style with spring in it. You can notice that we have not added `transition` property in the `useSpirng` hook, becuase `react-hook` handles that for use internally. In a nut-shell react-spring use spring math formulas instread of traditional Bézier curves used by CSS, that's the reason we don't pass `transition`, to `react-string`.
+
+Let's talk about `animated` from `react-spring`. The tranditional web does not support spring physics natively as of now. So we can not directly use `<span>` for our spring code, instead we use `<animated.span>`, which is similar to html's `<span>` tag, but additional feature of handling spring object that we have created using `useSpring`.
+
+Here is the same example made with `react-spring`. You be the judge.
+
+<div className="w-full flex flex-col justify-center items-center">
+  <div className="flex justify-center items-center">
+    <div className="mx-10">
+      <IconHoverAnimation
+        icon={bell}
+        size={40}
+        className="text-yellow-600"
+        hoverConfig={{ 
+          rotation: 20,
+          springConfig: {
+            tension: 400,
+            friction: 12,
+          },
+        }}
+      />
+    </div>
+    <div className="">
+      <IconHoverAnimation
+        icon={gift}
+        size={40}
+        className="text-dark-primary"
+        hoverConfig={{ 
+          rotation: 20,
+          springConfig: {
+            tension: 400,
+            friction: 12,
+          },
+        }}
+      />
+    </div>
+  </div>
+
+  <span className="text-base text-light-primary dark:text-dark-primary py-2">
+    (Hover over above icons to see the magic.)
+  </span>
+</div>
+
+To make animations even smoother we can edit spring configuration a but like this.
+
+```jsx
+  const style = useSpring({
+    display: 'inline-block',
+    backfaceVisibility: 'hidden',
+    transform: hasAnimated
+      ? `rotate(${rotation}deg)`
+      : `rotate(0deg)`,
+    config: {
+      tension: 300,
+      friction: 10,
+    },
+  });
+```
+
+By lowering the friction and increasing tension we can create something like this too.
+
+<div className="w-full flex flex-col justify-center items-center">
+  <div className="flex justify-center items-center">
+    <div className="mx-10">
+      <IconHoverAnimation
+        icon={bell}
+        size={40}
+        className="text-yellow-600"
+        hoverConfig={{ 
+          rotation: 30,
+          springConfig: {
+            tension: 1000,
+            friction: 2,
+          },
+        }}
+      />
+    </div>
+    <div className="">
+      <IconHoverAnimation
+        icon={gift}
+        size={40}
+        className="text-dark-primary"
+        hoverConfig={{ 
+          rotation: 30,
+          springConfig: {
+            tension: 1000,
+            friction: 2,
+          },
+        }}
+      />
+    </div>
+  </div>
+
+  <span className="text-base text-light-primary dark:text-dark-primary py-2">
+    (Hover over above icons to see the magic.)
+  </span>
+</div>
+
+Till now we were only animating rotation property, but this component can do a lot better. We can add `scale` and `translate` animations without any hussle.
+
+```jsx
+
+const HoverAnimation = ({ 
+    x = 0,
+    y = 0,
+    scale = 1,
+    rotation = 0,
+    timing = 150,
+    children 
+  }) => {
+
+  const style = useSpring({
+    display: 'inline-block',
+    backfaceVisibility: 'hidden',
+    transform: hasAnimated
+      ? `rotate(${rotation}deg)
+        translate(${x}px ${y}px)
+        scale(${scale})`
+      : `rotate(0deg)
+        translate(0px 0px)
+        scale(1)`,
+    config: {
+      tension: 350,
+      friction: 10,
+    }
+  });
+
+  // ...
+
+```
+
+After doing so, now our component will accept `scale` value, `rotation`  value and `x` and `y` value for tranlation. We have given default value as their natural value, such that if you dont pass specific value, then it will not animate. 
+
+This is how we create an element, that animate when we hover over it. But it is the best we can do. Let's see. Can we make something like this with this HoverAnimation component?
+
+<div className="w-full flex flex-col justify-center items-center">
+  <div className="flex justify-center items-center">
+      <NavItemHoverAnimation
+        icon={home}
+        size={30}
+        className="text-white"
+        hoverConfig={{ y: 5, rotation: 5 }}
+      />
+  </div>
+
+  <span className="text-base text-light-primary dark:text-dark-primary py-2">
+    (Hover over above icons to see the magic.)
+  </span>
+</div>
+
+This element will animation even if you don't hover directly onto the home icon. This is where our component will fail. `HoverAnimation` is build in such a way that it will only animate when that element is hovered. What we are seeing in above element is animation is triggered when some other element is hovered. Best approach to achieve is and make our component more flexible is to convert that component into custom hook. Let's see what we can achieve by this hook.
+
+```jsx
+// hooks/use-animation.js
+import React from 'react';
+import { useSpring } from 'react-spring';
+
+function useAnimation({
+  x = 0,
+  y = 0,
+  rotation = 0,
+  scale = 1,
+  timing = 150,
+  springConfig = {
+    tension: 300,
+    friction: 10,
+  },
+}) {
+  const [isAnimated, setIsAnimated] = React.useState(false);
+  const style = useSpring({
+    display: 'inline-block',
+    backfaceVisibility: 'hidden',
+    config: springConfig,
+    transform: isAnimated
+      ? `translate(${x}px, ${y}px)
+          scale(${scale})
+          rotate(${rotation}deg)`
+      : `translate(0px, 0px)
+          scale(1)
+          rotate(0deg)`,
+  });
+  React.useEffect(() => {
+    // same as before
+  }, [isAnimated]);
+
+  const trigger = React.useCallback(() => {
+    setIsAnimated(true);
+  }, []);
+
+  return [style, trigger];
+}
+```
+
+Here we are accepting object of properties we want to animate along with `springConfig` and returning a style object which will be eventually used in `<animated.div>` or `<animated.span>`, and a trigger function which will toggel `isAnimated` value. Doing so gives us much more flexibility. For example, now we can call trigger on just on `hover` but on event handler we want. Let's say, for mobile users you want to animate this on tap, or you want some part of your website to animate after some interval to give emphasis to that part, all this and more can be done with `useAnimation` hook. Let's see how to actually use this hook in a component.
+
+```jsx
+export const NavItemHoverAnimation = () => {
+  const [style, trigger] = useAnimation({ y: 5 })
+
+  return (
+    <div onMouseEnter={trigger} >
+      <span>Home</span>
+      <animated.span style={style}>
+        <Icon icon="home" size={20} />
+      </animated.span>
+    </div>
+  )
+}
+
+```
+
+That's all for Hover animations today. You can modify this hook and do all the crazy things you can think of. If you create something cool do let me know on twitter - [@viral_sangani_](https://twitter.com/viral_sangani_). 
+
+I am planning on publishing one article a week. Consider subscribing to my newsletter for reading more awesome articles.
+
+![GIFY](https://media.giphy.com/media/Rhf0uSWt1P2TFqVMZK/giphy.gif)

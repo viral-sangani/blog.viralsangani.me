@@ -1,11 +1,12 @@
 const faunadb = require('faunadb')
 
-exports.handler = async (event) => {
+const handler = async (event) => {
   const q = faunadb.query
   const client = new faunadb.Client({
     secret: 'fnAEKN1rNAACB66g7lgKdTQ9Z16l5fE1KTEYxmfR',
   })
   const { slug } = event.queryStringParameters
+  console.log(slug)
   if (!slug) {
     return {
       statusCode: 400,
@@ -18,6 +19,7 @@ exports.handler = async (event) => {
   const doesDocExist = await client.query(
     q.Exists(q.Match(q.Index('hits_by_slug'), slug))
   )
+  console.log(doesDocExist)
   if (!doesDocExist) {
     await client.query(
       q.Create(q.Collection('metadata'), {
@@ -36,6 +38,7 @@ exports.handler = async (event) => {
       },
     })
   )
+  console.log(document.data.hits)
   return {
     statusCode: 200,
     body: JSON.stringify({
@@ -43,3 +46,9 @@ exports.handler = async (event) => {
     }),
   }
 }
+
+;(async function () {
+  await handler({
+    queryStringParameters: { slug: 'understanding-layouts-with-css-grid' },
+  })
+})()

@@ -1,10 +1,10 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import {
-  useRandomInterval,
-  usePrefersReducedMotion,
   random,
   range,
+  usePrefersReducedMotion,
+  useRandomInterval,
 } from '../components/utils'
 
 const DEFAULT_COLOR = '#FFC700'
@@ -66,7 +66,40 @@ const Sparkle = ({ size, color, style }) => {
   )
 }
 
-export const Note = ({ children }) => {
+export const Note = ({ children, varient }) => {
+  if (varient === 'success')
+    return (
+      <div className="bg-light-backgroundSecondary dark:bg-dark-backgroundSecondary py-2 px-5 md:px-8 lg:px-10 rounded-lg border-l-4 border-light-primary dark:border-green-500 relative mt-10 mb-8">
+        <p className="py-4 text-light-font dark:text-dark-font text-xl leading-8">
+          {children}
+        </p>
+        <div
+          className="absolute bg-light-background dark:bg-dark-background flex justify-center items-center"
+          style={{
+            top: -25,
+            left: -25,
+            width: 50,
+            height: 50,
+            borderRadius: 25,
+          }}
+        >
+          <svg
+            fill="none"
+            height="38"
+            width="38"
+            viewBox="0 0 24 24"
+            stroke="rgba(16, 185, 129, var(--tw-border-opacity))"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="8"></line>
+          </svg>
+        </div>
+      </div>
+    )
   return (
     <div className="bg-light-backgroundSecondary dark:bg-dark-backgroundSecondary py-2 px-5 md:px-8 lg:px-10 rounded-lg border-l-4 border-light-primary dark:border-dark-primary relative mt-10 mb-8">
       <p className="py-4 text-light-font dark:text-dark-font text-xl leading-8">

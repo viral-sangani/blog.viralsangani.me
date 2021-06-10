@@ -71,7 +71,7 @@ const SEO = ({ description, lang, meta, title, image }) => {
         },
         {
           name: `og:image`,
-          content: `https://blog.viralsangani.me${image}`,
+          content: `https://blog.viralsangani.me${image}?1`,
         },
       ].concat(meta)}
     >

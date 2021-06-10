@@ -1,13 +1,13 @@
-import React from 'react'
 import { Link } from 'gatsby'
-import Tags from './Tags'
+import Img from 'gatsby-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import React from 'react'
+import HitCounter from './HitCounter'
+import PollyAudioPlayer from './PollyAudioPlayer'
 import RenderMdx from './RederMdx'
 import SocialShare from './SocialShare'
 import Subscribe from './Subscribe'
-import PollyAudioPlayer from './PollyAudioPlayer'
-import Img from 'gatsby-image'
-import HitCounter from './HitCounter'
+import Tags from './Tags'
 
 const BlogDetail = ({
   excerpt,
@@ -69,7 +69,11 @@ const BlogDetail = ({
             </RenderMdx>
             <div className="user-content"></div>
 
-            <ul className="flex md:flex-nowrap lg:flex-nowrap flex-wrap justify-between list-none p-0 text-light-font dark:text-dark-font text-xl">
+            <ul
+              className={`flex md:flex-nowrap lg:flex-nowrap flex-wrap ${
+                !previous ? `justify-end` : `justify-between`
+              } list-none p-0 text-light-font dark:text-dark-font text-xl`}
+            >
               {previous && (
                 <Link to={`${previous.fields.slug}`}>
                   <li className="border-2 rounded-xl hover:bg-light-primary dark:hover:bg-dark-primary my-2 border-light-primary dark:border-dark-primary p-4  hover:text-white  mr-2 cursor-pointer hover:font-bold">

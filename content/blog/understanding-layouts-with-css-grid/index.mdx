@@ -141,7 +141,7 @@ Here, we are saying that I want to add all my content in the second column. <Spe
       className="blog1-wrapper"
       style={{
         gridTemplateRows: '1fr 2fr 1fr 1fr',
-        gridTemplateColumns: '1fr min(300px, 100%) 1fr',
+        gridTemplateColumns: '1fr min(250px, 100%) 1fr',
       }}
     >
       <div className="main"></div>
@@ -175,34 +175,6 @@ Here, we are saying that I want to add all my content in the second column. <Spe
 
 From the above example, you might be thinking what if I want one of the div to go rogue and take full width irrespective of side columns? Don't worry, the grid has a solution for that too.
 You can set the `grid-column` property of a particular item you wish to take full width to `1 / -1`. In our case, you can also specify it to `1 / 4`, which defines that we want to span from column 1(inclusive) and column 4(exclusive).
-
-Below is a live preview for you to test some layouts. You can use Tailwind in there too 😇
-
-```js live=true
-<div
-  style={{
-    display: 'grid',
-    gridTemplateRows: '2fr 1fr 2fr',
-    gridTemplateColumns: '1fr 200px 1fr',
-    height: 250,
-  }}
->
-  <div className="flex items-center justify-center bg-red-500">Nav</div>
-  <div className="flex items-center justify-center bg-green-500">Main</div>
-  <div className="flex items-center justify-center bg-blue-500">Ads</div>
-
-  <div
-    style={{ gridColumn: '1/4' }}
-    className="w-full flex items-center justify-center"
-  >
-    Image
-  </div>
-
-  <div className="flex items-center justify-center bg-red-500">Nav</div>
-  <div className="flex items-center justify-center bg-green-500">Main</div>
-  <div className="flex items-center justify-center bg-blue-500">Ads</div>
-</div>
-```
 
 If you are trying to recreate this for your website, you might see that in mobile view, when it takes 100% width, it just looks too stretchy, right? That's because we are not giving any padding to our content when it's at 100% width. If you suggest we can achieve this by simply adding padding to our content in the middle column then you are 100% right. But this is a Grid/Layout article so we will give padding in Grid style. You might need a little bit 🤏🏻 of mathematics for it. Let's see the solution:
 

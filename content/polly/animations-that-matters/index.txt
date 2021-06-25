@@ -1,0 +1,133 @@
+I think hover animations are too underrated. Hover animations are one of the modes beautiful ways to make any application feel responsive and dynamic. I agree hover animation is a small thing to consider while creating a big project, but it's these kinds of small details that, in aggregate make a product great.
+
+Any developer can create a simple hover animation with "transitions" and "transform" CSS properties, but those animations are not neat and pixel perfect. In this article we will see have to make a simple hover animation look great by using "spring" functions.
+
+Use case of using "spring" in CSS animations are infinite. Below are some of the examples I have created.
+
+
+Let's start
+
+Since react is such a robust and flexible framework, which provides a component-driven architecture to implement UI and its elements, we will look into creating flexible components to implement such animations so that they can be used in multiple places.
+
+To start with we will create a component and let's call it "HoverAnimation".
+
+
+
+
+
+Let's break down the code. Basically, we wanted to create a component that will change its state on mouse hover. In doing so we are starting a timer, which eventually sets the component to its original place when the timer end, irrespective of whether the mouse is still hovering over that component or not. This creates a cool-looking animation, not the one which stops animating as soon as you remove your mouse from that component.
+
+TO keep the state of animation we have creates a state "hasAnimated".
+
+const hasAnimated, setHasAnimated = useState false
+
+We accept a "children" in component and wrap those children in "div", so that we can apply animation and hover event trigger to that element.
+
+
+
+
+On top of this, we have an "useEffect" hook, which will re-render when "hasAnimated" changes its value. So practically, when someone hovers over the element, the "trigger" function will set "hasAnimated" to "true", this will trigger "useEffect", which in return start a timer which will set "hasAnimated" value to "false".
+
+
+
+
+
+We have talked about "hasAnimated" but let's see what it actually does. "hasAnimated" is used inside a style object, which changes the style of component depending on the value of "hasAnimated". We rotate the element if "hasAnimated" is "true" and move it back to its original place, i.e. "0deg" when "hasAnimated" is "false". To animate this nicely we have added "transition" property to it. Timing for transition is taken as an input for the component to make this component more flexible. Doing so we have full control of how long and up to what degree should the animation go.
+
+
+
+
+
+
+Note:
+
+We are using backfaceVisibility: hidden to use hardware acceleration in animations. You can read more about back-face-visibility at w 3 school.
+
+We need to use inline-block instead of inline because inline elements can not be transformed. 
+
+
+This is how we will use the "HoverAnimation" component.
+
+
+
+
+AND This is what it would look like:
+
+
+
+
+
+While this is awesome to use with just 3 lines, but it feels robotic and rigid. To make it more natural and fluid, we can add a pinch of spring to it. Let's see how to implement Spring to our component.
+
+For this, we will be using react spring. react spring provides modern hooks to easily add spring effects to your animations.
+
+To install just do,
+
+yarn add react spring
+
+or if you are an npm person
+
+npm install react spring
+
+After adding react spring, we need to modify our "HoverAnimation" component
+
+
+
+
+
+Let's start from the top. We import "animated" and "useSpring" hook from "react spring". Now instead of creating an object for style, we will use "useSpring" and pass the style in this hook. The hook will do its magic and returns the style with spring in it. You can notice that we have not added the "transition" property in the "useSpirng" hook, because "react-hook" handles that for use internally. In a nut shell react-springuse spring math formulas instead of traditional Bézier curves used by CSS, that's the reason we don't pass "transition", to "react-string".
+
+
+
+Let's talk about "animated" from "react spring". The traditional web does not support spring physics natively as of now. So we can not directly use "<span>" for our spring code, instead, we use "<animated.span>", which is similar to HTML's "<span>" tag, but an additional feature of handling spring object that we have created using "useSpring".
+
+
+
+Here is the same example made with "react spring". You be the judge.
+
+
+
+
+To make animations even smoother we can edit spring configuration a bit like this.
+
+
+
+
+By lowering the friction and increasing tension we can create something like this too.
+
+
+
+
+
+Till now we were only animating rotation property, but this component can do a lot better. We can add "scale" and "translate" animations without any hassle.
+
+
+
+
+
+After doing so, now our component will accept "scale" value, "rotation"  value, and "x" and "y" value for translation. We have given default value as their natural value, such that if you don't pass a specific value, then it will not animate. 
+
+
+This is how we create an element, that animate when we hover over it. But it is the best we can do. Let's see. Can we make something like this with this HoverAnimation component?
+
+
+
+
+
+This element will animation even if you don't hover directly onto the home icon. This is where our component will fail. "HoverAnimation" is built in such a way that it will only animate when that element has hovered. What we are seeing in the above element is animation is triggered when some other element hovers. The best approach to achieve is and make our component more flexible is to convert that component into the custom hook. Let's see what we can achieve by this hook.
+
+
+
+
+
+Here we are accepting the object of properties we want to animate along with "springConfig" and returning a style object which will be eventually used in "<animated.div>" or "<animated.span>", and a trigger function which will toggle "isAnimated" value. Doing so gives us much more flexibility. For example, now we can call trigger on just on "hover" but on event handler we want. Let's say, for mobile users you want to animate this on tap, or you want some part of your website to animate after some interval to give emphasis to that part, all this and more can be done with the "useAnimation" hook. Let's see how to actually use this hook in a component.
+
+
+
+
+
+That's all for Hover animations today. You can modify this hook and do all the crazy things you can think of. If you create something cool do let me know on Twitter - at viral underscore sangani underscore
+
+I am planning on publishing one article two week. Consider subscribing to my newsletter for reading more awesome articles.
+
+Thank you

@@ -1,8 +1,8 @@
-import React from 'react'
-import Layout from '../components/layout'
 import { graphql, Link } from 'gatsby'
-import BlogCard from '../components/BlogCard'
 import get from 'lodash/get'
+import React from 'react'
+import BlogCard from '../components/BlogCard'
+import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Subscribe from '../components/Subscribe'
 
@@ -31,28 +31,22 @@ export default function TagPost(props) {
               </div>
             </div>
           </div>
-          <div className="row">
-            &nbsp;
-            <div
-              className="sidebar col-xs-12 col-md-12"
-              data-component="sidebar"
-            >
-              {posts.map(({ node }) => {
-                const title = get(node.frontmatter, 'title') || node.fields.slug
-                return (
-                  <BlogCard
-                    timeToRead={node.timeToRead}
-                    key={node.fields.slug}
-                    slug={node.fields.slug}
-                    title={title}
-                    created={node.frontmatter.date}
-                    description={node.excerpt}
-                    hero={node.frontmatter.featuredImage.childImageSharp.fluid}
-                    tags={node.frontmatter.tags}
-                  />
-                )
-              })}
-            </div>
+          <div className="pt-6 w-full flex flex-row flex-wrap">
+            {posts.map(({ node }) => {
+              const title = get(node.frontmatter, 'title') || node.fields.slug
+              return (
+                <BlogCard
+                  timeToRead={node.timeToRead}
+                  key={node.fields.slug}
+                  slug={node.fields.slug}
+                  title={title}
+                  created={node.frontmatter.date}
+                  description={node.excerpt}
+                  hero={node.frontmatter.featuredImage.childImageSharp.fluid}
+                  tags={node.frontmatter.tags}
+                />
+              )
+            })}
           </div>
           <Subscribe />
         </div>

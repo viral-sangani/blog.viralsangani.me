@@ -1,7 +1,7 @@
-import React from 'react'
 import { Link } from 'gatsby'
-import Tags from './Tags'
 import Img from 'gatsby-image/withIEPolyfill'
+import React from 'react'
+import Tags from './Tags'
 
 const BlogCard = ({
   slug,
@@ -35,7 +35,7 @@ const BlogCard = ({
               {created} &mdash;
             </time>
             <span className="text-light-primary dark:text-dark-primary text-lg">
-              &nbsp;&nbsp;{timeToRead} min read ☕
+              &nbsp;&nbsp;{timeToRead + 3} min read ☕
             </span>
             <h2 className="mt-0 pb-6">
               <Link className="title__link text-3xl" to={`${slug}`}>

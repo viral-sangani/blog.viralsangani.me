@@ -45,7 +45,7 @@ const BlogDetail = ({
                 >
                   {created}{' '}
                 </time>
-                &mdash; {timeToRead} min read ☕
+                &mdash; {timeToRead + 3} min read ☕
               </p>
               <div className="pb-5">
                 <div id="all-tags">

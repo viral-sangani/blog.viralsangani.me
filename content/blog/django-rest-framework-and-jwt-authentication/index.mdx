@@ -20,10 +20,10 @@ curl http://127.0.0.1:8000/hello/ -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJh
 
 JWT is designed in such a way that, a client exchange <Special>access token</Special> and <Special>refresh token</Special> for username and password.
 
-1. <Sparkles>Access Tokens: </Sparkles> are short-lived, generally 5 min, and can
+1. <Special>Access Tokens: </Special> are short-lived, generally 5 min, and can
    be modified.
 
-2. <Sparkles>Refresh Tokens: </Sparkles> are comparatively long-lived, generally
+2. <Special>Refresh Tokens: </Special> are comparatively long-lived, generally
    12 hours. It can be compared to session token, which Django generally uses. A
    refresh token is used to get the new access token, once an access token is expired.
 

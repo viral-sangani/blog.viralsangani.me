@@ -5,7 +5,7 @@ import useHoverAnimation, {
   useHoverAnimationWithoutSpring,
 } from '../components/hoverAnimationHook'
 
-export const IconHoverAnimation = ({ icon, className, size, hoverConfig }) => {
+export const IconHoverAnimation = ({ icon, styleColor, size, hoverConfig }) => {
   const [style, trigger] = useHoverAnimation(hoverConfig)
 
   return (
@@ -13,14 +13,16 @@ export const IconHoverAnimation = ({ icon, className, size, hoverConfig }) => {
       style={{ ...style, cursor: 'pointer' }}
       onMouseEnter={trigger}
     >
-      <Icon icon={icon} className={className} size={size} />
+      <div style={styleColor}>
+        <Icon icon={icon} size={size} />
+      </div>
     </animated.span>
   )
 }
 
 export const IconHoverAnimationWithoutSpring = ({
   icon,
-  className,
+  styleColor,
   size,
   hoverConfig,
 }) => {
@@ -28,7 +30,9 @@ export const IconHoverAnimationWithoutSpring = ({
 
   return (
     <span style={{ ...style, cursor: 'pointer' }} onMouseEnter={trigger}>
-      <Icon icon={icon} className={className} size={size} />
+      <div style={styleColor}>
+        <Icon icon={icon} size={size} />
+      </div>
     </span>
   )
 }

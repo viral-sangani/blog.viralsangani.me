@@ -34,25 +34,25 @@ Use case of using `spring` in CSS animations are infinite. Below are some of the
       <IconHoverAnimation
         icon={thumbsUp}
         size={40}
-        className="text-white"
+        styleColor={{color: "rgb(255, 255, 255)"}}
         hoverConfig={{ y: 5, rotation: 5 }}
       />
       <IconHoverAnimation
         icon={thumbsUp}
         size={40}
-        className="text-yellow-300"
+        styleColor={{color: "rgb(252, 211, 77)"}}
         hoverConfig={{ y: 5, rotation: 5 }}
       />
       <IconHoverAnimation
         icon={thumbsUp}
         size={40}
-        className="text-yellow-500"
+        styleColor={{color: "rgb(245, 158, 11)"}}
         hoverConfig={{ y: 5, rotation: 5 }}
       />
       <IconHoverAnimation
         icon={thumbsUp}
         size={40}
-        className="text-red-600"
+        styleColor={{color: "rgb(220, 38, 38)"}}
         hoverConfig={{ y: 5, rotation: 5 }}
       />
     </div>
@@ -60,7 +60,7 @@ Use case of using `spring` in CSS animations are infinite. Below are some of the
       <IconHoverAnimation
         icon={twitter}
         size={40}
-        className="text-blue-500"
+        styleColor={{color: "rgb(59, 130, 246)"}}
         hoverConfig={{ rotation: 15 }}
       />
     </div>
@@ -192,7 +192,7 @@ This is what it would look like:
       <IconHoverAnimationWithoutSpring
         icon={twitter}
         size={40}
-        className="text-blue-500"
+        styleColor={{color: "rgb(59, 130, 246)"}}
         hoverConfig={{ rotation: 15 }}
       />
     </div>
@@ -200,7 +200,7 @@ This is what it would look like:
       <IconHoverAnimationWithoutSpring
         icon={zap}
         size={40}
-        className="text-yellow-500"
+        styleColor={{color: "rgb(245, 158, 1)"}}
         hoverConfig={{ rotation: 15 }}
       />
     </div>
@@ -270,7 +270,7 @@ Here is the same example made with `react-spring`. You be the judge.
       <IconHoverAnimation
         icon={bell}
         size={40}
-        className="text-yellow-600"
+        styleColor={{color: "rgb(217, 119, 6)"}}
         hoverConfig={{ 
           rotation: 20,
           springConfig: {
@@ -284,7 +284,7 @@ Here is the same example made with `react-spring`. You be the judge.
       <IconHoverAnimation
         icon={gift}
         size={40}
-        className="text-dark-primary"
+        styleColor={{color: "rgb(255, 10, 120)"}}
         hoverConfig={{ 
           rotation: 20,
           springConfig: {
@@ -325,7 +325,7 @@ By lowering the friction and increasing tension we can create something like thi
       <IconHoverAnimation
         icon={bell}
         size={40}
-        className="text-yellow-600"
+        styleColor={{color: "rgb(217, 119, 6)"}}
         hoverConfig={{ 
           rotation: 30,
           springConfig: {
@@ -339,7 +339,7 @@ By lowering the friction and increasing tension we can create something like thi
       <IconHoverAnimation
         icon={gift}
         size={40}
-        className="text-dark-primary"
+        styleColor={{color: "rgb(255, 10, 120)"}}
         hoverConfig={{ 
           rotation: 30,
           springConfig: {

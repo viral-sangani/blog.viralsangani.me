@@ -8,15 +8,77 @@ import BlogCard from '../components/BlogCard'
 import { tagNames } from '../components/utils'
 import Subscribe from '../components/Subscribe'
 import Img from 'gatsby-image/withIEPolyfill'
+import FigmentCard from '../components/FigmentCard'
 
 const BlogIndex = (props) => {
   const { data, location } = props
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMdx.edges
   const homeHeroImg = data.allImageSharp.nodes[0].fluid
-  console.log(`homeHeroImg`, homeHeroImg)
   const latestPost = posts[0]
-  console.log(`latestPost`, latestPost)
+
+  const figmentData = [
+    {
+      title: 'Create a Peer to Peer payment dApp, Part 1',
+      description:
+        'This tutorial will learn how to create a Peer-to-Peer payment dApp and deploy our smart contract on Polygon Network. We will first create an ERC20 token smart contract and use this token in our payment dApp to send to other addresses.',
+      icon:
+        'https://learn.figment.io/_next/image?url=%2Fimages%2Flogo-main.svg&w=1920&q=75',
+      timeToRead: '1 hour',
+      url:
+        'https://learn.figment.io/tutorials/peer-to-peer-payment-on-polygon-part-1',
+      date: 'Sept 28th, 2021',
+      tags: ['Intermediate', 'Polygon', 'Javascript', 'Next.js'],
+    },
+    {
+      title: 'Create a Peer to Peer payment dApp, Part 2',
+      description:
+        'This is the second part of two-part tutorial series on how to create a Peer-to-Peer payment dApp. In the first part, we created an ERC20 token using an openzappline contract and deployed it on the Polygon testnet. This part will learn how to add other tokens like USDT, BUSD, etc... on the Polygon network.',
+      icon:
+        'https://learn.figment.io/_next/image?url=%2Fimages%2Flogo-main.svg&w=1920&q=75',
+      timeToRead: '1 hour',
+      url:
+        'https://learn.figment.io/tutorials/peer-to-peer-payment-on-polygon-part-2',
+      date: 'Sept 28th, 2021',
+      tags: ['ERC20', 'Polygon', 'Javascript', 'Next.js'],
+    },
+    {
+      title: 'How to create a Polymarket clone on Polygon',
+      description:
+        'In this tutorial, we will learn how to create a Polymarket clone. Polymarket is a decentralized information market, harnessing the power of free markets to demystify the real-world events that matter most. We will create a full-stack dApp with an admin panel where events/markets are created, and a UI where users can predict the outcome on the website. In this tutorial we will create two smart contracts, one for the ERC20 tokens used on our website to delegate an amount to a specific event, and another contract for Polymarket itself.',
+      icon:
+        'https://learn.figment.io/_next/image?url=%2Fimages%2Flogo-main.svg&w=1920&q=75',
+      timeToRead: '1 hour',
+      url:
+        'https://learn.figment.io/tutorials/create-a-polymarket-clone-on-polygon',
+      date: 'Nov 18th, 2021',
+      tags: ['Solidity', 'Polygon', 'Next.js'],
+    },
+    {
+      title: 'Create a donation dApp on Polygon',
+      description:
+        'In this tutorial, you will learn how to create a Donation dApp on Polygon to award your favorite content creator with MATIC tokens and how to deploy your smart contract on the Polygon network.',
+      icon:
+        'https://learn.figment.io/_next/image?url=%2Fimages%2Flogo-main.svg&w=1920&q=75',
+      timeToRead: '1.5 hour',
+      url:
+        'https://learn.figment.io/tutorials/create-a-donation-dapp-on-polygon',
+      date: 'Spet 14th, 2021',
+      tags: ['IPFS', 'Solidity', 'Polygon'],
+    },
+    {
+      title: 'Create a To-Do dApp with Flutter',
+      description:
+        'In this tutorial, we will learn how to perform CRUD (Create, Read, Update and Delete) operations in a Flutter Dapp on the Polygon network by creating a To-do app.',
+      icon:
+        'https://learn.figment.io/_next/image?url=%2Fimages%2Flogo-main.svg&w=1920&q=75',
+      timeToRead: '1.5 hour',
+      url: 'https://learn.figment.io/tutorials/create-a-todo-dapp-with-flutter',
+      date: 'Spet 14th, 2021',
+      tags: ['Flutter', 'Solidity', 'Polygon', 'Next.js'],
+    },
+  ]
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Blog" />
@@ -45,6 +107,24 @@ const BlogIndex = (props) => {
           </div>
         </div>
         <div className="flex flex-col mx-auto relative max-w-screen-xl px-4 sm:px-6 lg:px-20 py-4">
+          {/* <div className="my-5 text-black dark:text-white">Web3 Tutorials</div> */}
+
+          <h2 className="mt-16 pb-6 title__link text-6xl">Web3 Tutorials</h2>
+          <div className="pt-6 w-full flex flex-row flex-wrap">
+            {figmentData.map((data) => {
+              return (
+                <FigmentCard
+                  timeToRead={data.timeToRead}
+                  key={data.slug}
+                  url={data.url}
+                  title={data.title}
+                  created={data.date}
+                  description={data.description}
+                  tags={data.tags}
+                />
+              )
+            })}
+          </div>
           <div className="flex flex-col md:flex-row lg:flex-row justify-center">
             <div className="block md:hidden lg:hidden xl:hidden">
               <div className="mb-2 w-full md:w-3/12 lg:w-3/12 flex items-center flex-col ">

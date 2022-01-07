@@ -1,14 +1,14 @@
 // Gatsby supports TypeScript natively!
-import React from 'react'
 import { graphql } from 'gatsby'
-import Tags from '../components/Tags'
+import Img from 'gatsby-image/withIEPolyfill'
+import React from 'react'
+import BlogCard from '../components/BlogCard'
+import FigmentCard from '../components/FigmentCard'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import BlogCard from '../components/BlogCard'
-import { tagNames } from '../components/utils'
 import Subscribe from '../components/Subscribe'
-import Img from 'gatsby-image/withIEPolyfill'
-import FigmentCard from '../components/FigmentCard'
+import Tags from '../components/Tags'
+import { tagNames } from '../components/utils'
 
 const BlogIndex = (props) => {
   const { data, location } = props
@@ -18,6 +18,17 @@ const BlogIndex = (props) => {
   const latestPost = posts[0]
 
   const figmentData = [
+    {
+      title: 'Build a Funding DAO on Polygon',
+      description:
+        'In this tutorial, you will learn how to create a Decentralized Autonomous Organization, or "DAO" with a Solidity smart contract deployed on Polygon and a NextJS front-end to interact with the DAO.',
+      icon:
+        'https://learn.figment.io/_next/image?url=%2Fimages%2Flogo-main.svg&w=1920&q=75',
+      timeToRead: '2 hours',
+      url: 'https://learn.figment.io/tutorials/funding-dao-polygon',
+      date: 'Jan 2th, 2022',
+      tags: ['DAO', 'Polygon', 'Solidity', 'Next.js', 'JS/TS'],
+    },
     {
       title: 'Create a Peer to Peer payment dApp, Part 1',
       description:

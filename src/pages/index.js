@@ -19,6 +19,17 @@ const BlogIndex = (props) => {
 
   const figmentData = [
     {
+      title: 'How to create an on-chain NFT game',
+      description:
+        'In this tutorial, we will learn how to create an NFT game with a Solidity smart contract deployed on Avalanche Network and a NextJS front-end to interact with the game.',
+      icon:
+        'https://learn.figment.io/_next/image?url=%2Fimages%2Flogo-main.svg&w=1920&q=75',
+      timeToRead: '3 hours',
+      url: 'https://learn.figment.io/tutorials/avalanche-on-chain-nft-game',
+      date: 'Feb 26th, 2022',
+      tags: ['NFTs', 'Avalanche', 'Solidity', 'Next.js'],
+    },
+    {
       title: 'Build a Funding DAO on Polygon',
       description:
         'In this tutorial, you will learn how to create a Decentralized Autonomous Organization, or "DAO" with a Solidity smart contract deployed on Polygon and a NextJS front-end to interact with the DAO.',

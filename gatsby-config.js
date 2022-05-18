@@ -107,7 +107,8 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Viral Sangani Blog`,
-        short_name: `Viral Sangani Blog`,
+        short_name: `Viral's Blog`,
+        description: `All about Web3 and Stuff`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
